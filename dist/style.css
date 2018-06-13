@@ -1,0 +1,22 @@
+*{
+    font-family: Verdana;
+}
+.main-container{
+    background: url("./resources/images/Background.png") no-repeat center center;
+    background-size: cover;
+    margin-top: 4rem;
+}
+.game-block{
+}
+.game-canvas-container{
+    display: flex;
+}
+.canvas-sheet{
+    position: relative;
+}
+.skills-sheet-canvas{
+    z-index: 1;
+}
+.actors-sheet-canvas{
+    z-index: 2;
+}
