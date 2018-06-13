@@ -49,4 +49,4 @@ function justSpell(spell) {
   })
 }
 
-justSpell(arrow)
+justSpell(star)

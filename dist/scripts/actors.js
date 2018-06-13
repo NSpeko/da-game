@@ -1,8 +1,7 @@
 let actorsCanvas = document.getElementById('actors')
 actorsCanvas.width = CANVAS_WIDTH;
 actorsCanvas.height = CANVAS_HEIGHT;
-actorsCanvas.style.left = '-'+CANVAS_WIDTH+'px';
-let actorsCtx = actorsCanvas.getContext('2d');
+let actorsContext = actorsCanvas.getContext('2d');
 
 class Actor {
   constructor(xLoc, yLoc, type, name) {
@@ -28,7 +27,7 @@ class Player extends Actor {
   }
   playerInitalise(image, xLoc, yLoc) {
     setInterval(function () {
-      actorsCtx.drawImage(image, xLoc, yLoc, image.width, image.height);
+      actorsContext.drawImage(image, xLoc, yLoc, image.width, image.height);
     }, 24)
   }
   win() {
@@ -54,7 +53,7 @@ class Enemy extends Actor {
   }
   enemyInitalise(image, xLoc, yLoc) {
     setInterval(function () {
-      actorsCtx.drawImage(image, xLoc, yLoc, image.width, image.height);
+      actorsContext.drawImage(image, xLoc, yLoc, image.width, image.height);
     }, 24)
   }
 }
@@ -64,7 +63,7 @@ function createPlayer(gender, name) {
   playerImg.src = `./resources/images/player_${gender}.png`;
   playerImg.width = PLAYER_WIDTH;
   playerImg.height = PLAYER_HEIGHT;
-  PLAYER = new Player (WRAP, CANVAS_HEIGHT - PLAYER_HEIGHT - GROUND_WRAP, 'player', playerImg, name);
+  PLAYER = new Player (WRAP, CANVAS_HEIGHT - PLAYER_HEIGHT, 'player', playerImg, name);
 }
 
 function createEnemy() { //change later
@@ -73,7 +72,7 @@ function createEnemy() { //change later
   enemyImg.width = ENEMY_WIDTH;
   enemyImg.height = ENEMY_HEIGHT;
   enemyDraw();
-  ENEMY = new Enemy (CANVAS_WIDTH - ENEMY_WIDTH - WRAP, CANVAS_HEIGHT - ENEMY_HEIGHT - GROUND_WRAP, 'enemy', enemyImg, name)
+  ENEMY = new Enemy (CANVAS_WIDTH - ENEMY_WIDTH - WRAP, CANVAS_HEIGHT - ENEMY_HEIGHT, 'enemy', enemyImg, name)
 }
 
 createPlayer('male', 'Pasha');
