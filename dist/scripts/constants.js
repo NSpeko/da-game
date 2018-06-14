@@ -11,5 +11,5 @@ const BLOOD_COLOR = '#FF0000'
 let PLAYER = null;
 let ENEMY = null;
 
-const CANVAS_WIDTH = window.innerWidth - 50
+const CANVAS_WIDTH = document.getElementById('gameWindow').offsetWidth
 const CANVAS_HEIGHT = 500
