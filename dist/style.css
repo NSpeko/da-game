@@ -1,12 +1,12 @@
-*{
+body{
     font-family: Verdana;
 }
-.main-container{
+.main-game-container{
     margin-top: 4rem;
-}
-.game-block{
     background: url("./resources/images/Background.png") no-repeat center center;
     background-size: cover;
+}
+.game-block{
 }
 .game-canvas-container{
     display: flex;
@@ -21,5 +21,21 @@
     z-index: 2;
 }
 .game-menu{
-    text-align: center;
+    position: relative;
+    top: -500px;
+    z-index: 100;
+    display: inline-flex;
+}
+.game-menu button{
+    margin: 0 .3rem;
+}
+.game-menu-categories{
+    display: inline-flex;
+}
+.game-menu-dropdown-options{
+    max-height: 9rem;
+    overflow: auto;
+}
+.hidden{
+    visibility: hidden;
 }

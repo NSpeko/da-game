@@ -9,6 +9,44 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<header class="bg-dark fixed-top">
+    <div class="container" style="max-height: inherit">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <a class="navbar-brand" href="index.html">Da-game</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html" target="_parent">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Button to Open the Modal -->
+                        <a id="logInModalOpener" class="nav-link" href="#logInModal" data-toggle="modal" data-target="#logInModal">
+                            Log in
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</header>
+
 <div class="modal fade text-dark" id="logInModal">
     <div class="modal-dialog modal-sm">
         <script src="autorisation_script.js"></script>
@@ -57,63 +95,24 @@
             </div>
 
             <!-- Modal body -->
-            <form name="usersTaskForm" onsubmit="" method="post">
-                <div class="modal-body ">
-                    <label for="usersTaskAnswer">Your answer:</label>
-                    <input id="usersTaskAnswer" class="form-control " type="text" name="Name" value="" >
-                </div>
+            <div class="modal-body ">
+                <div id="userModalTaskContainer"></div>
+                <label for="usersTaskAnswer">Your answer:</label>
+                <input id="usersTaskAnswer" class="form-control " type="text" name="Name" value="" >
+            </div>
 
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <input class="btn btn-primary float-left" type="submit"
-                           value="Submit"/>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">
-                        Close
-                    </button>
-                </div>
-
-            </form>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary float-left" data-dismiss="modal">Submit</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
 
-<header class="bg-dark fixed-top">
-    <div class="container" style="max-height: inherit">
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-            <a class="navbar-brand" href="index.html">Da-game</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html" target="_parent">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- Button to Open the Modal -->
-                        <a id="logInModalOpener" class="nav-link" href="#logInModal" data-toggle="modal" data-target="#logInModal">
-                            Log in
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-        </nav>
-    </div>
-</header>
-<div id="gameWindow" class="container main-container">
+<div id="gameWindow" class="container main-game-container">
     <div id="onlyLoggedUserContent" style="display: none;">
     <div  class="game-block">
         <div class="game-canvas-container">
@@ -122,34 +121,42 @@
         </div>
     </div>
     <div class="game-menu">
-        <script src="scripts/menu_script.js"></script>
-        <div id="gameMenu" class="collapse">
-            <div id="attacksMenu" class="collapse" name="menuElement">
-                <div style="display: inline-flex">
-                    <section id="attackSkillDescription" class="">
-                        Lorem ipsum dolor sit amet
-                    </section>
-                    <section id="attackSkillsList" class="">
-                        Lorem ipsum dolor sit amet
-                    </section>
+        <script src="scripts/custom-collapse-script.js"></script>
+        <button type="button" class="btn btn-primary" onclick="collapseGameMenu();">Menu</button>
+        <div id="gameMenu" class="game-menu-categories hidden">
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Attack
+                </button>
+                <div class="dropdown-menu game-menu-dropdown-options">
+                    <button class="spellButton btn btn-primary">enemy!</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
                 </div>
-                <button class="spellButton btn btn-primary">player!</button>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
             </div>
-            <div id="healMenu" class="collapse" name="menuElement">
-                <div style="display: inline-flex">
-                    <section id="healSkillDescription" class="">
-                        Lorem ipsum dolor sit amet
-                    </section>
-                    <section id="healSkillsList" class="">
-                        Lorem ipsum dolor sit amet
-                    </section></div>
-                <button class="spellButton btn btn-primary">enemy!</button>
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Heal
+                </button>
+                <div class="dropdown-menu game-menu-dropdown-options">
+                    <button class="spellButton btn btn-primary">enemy!</button>
+                </div>
             </div>
-            <button onclick="toggleGameMenuOption(this);" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#attacksMenu">Attack</button>
-            <button onclick="toggleGameMenuOption(this);" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#healMenu">Heal</button>
         </div>
-        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#gameMenu">Menu</button>
     </div>
 </div>
     <script src="./scripts/constants.js"></script>
