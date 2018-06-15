@@ -1,8 +1,8 @@
 class Actor {
   constructor(xLoc, yLoc, type, name) {
     this.place = {
-      x: xLoc,
-      y: yLoc
+      x: xLoc * PX,
+      y: yLoc * PX
     };
     this.type = type;
     if (name) {
@@ -19,27 +19,43 @@ class Actor {
     this.drawHP();
   }
   drawName(nameWrap) {
-    actorsContext.font = `${25 * PX}px Verdana`;
-    actorsContext.fillStyle = "black";
-    actorsContext.textAlign = "center";
-    actorsContext.fillText(this.name, this.place.x + nameWrap, this.place.y - 15 * PX);
+    actorsContext.font = `${NAME_SIZE * PX}px Verdana`;
+    actorsContext.fillStyle = 'black';
+    actorsContext.textAlign = 'center';
+    actorsContext.fillText(this.name, this.place.x - nameWrap * PX, this.place.y - NAME_WRAP * PX);
   }
   drawHP(hpWrap) {
     let hpPercent = this.healPoints / MAX_HEAL_POINTS;
-    actorsContext.fillStyle = 'red'
-    actorsContext.fillRect(this.place.x - hpWrap, this.place.y - 55 * PX, hpPercent * this.image.width, 10 * PX)
+    actorsContext.fillStyle = 'red';
+    actorsContext.fillRect(
+      this.place.x - hpWrap,
+      this.place.y - HP_WRAP * PX,
+      hpPercent * this.image.width,
+      HP_LINE_HEIGHT * PX
+    );
     actorsContext.fillStyle = 'black';
-    actorsContext.strokeRect(this.place.x - hpWrap, this.place.y - 55 * PX, this.image.width, 10 * PX)
+    actorsContext.strokeRect(
+      this.place.x - hpWrap,
+      this.place.y - HP_WRAP * PX,
+      this.image.width,
+      HP_LINE_HEIGHT * PX
+    );
   }
   rebuild(rebuildedX, rebuildedY) {
     this.place = {
-      x: rebuildedX,
-      y: rebuildedY
-    }
+      x: rebuildedX * PX,
+      y: rebuildedY * PX
+    };
     this.redraw();
   }
   heal(spell) {
-    spellContext.drawImage(spell.image, this.place.x - this.image.width / 4, this.place.y, spell.width, spell.height);
+    spellContext.drawImage(
+      spell.image,
+      this.place.x - this.image.width / 4,
+      this.place.y,
+      spell.width,
+      spell.height
+    );
     if (this.healPoints <= MAX_HEAL_POINTS - HEAL) {
       this.healPoints += HEAL;
     } else {
@@ -47,20 +63,25 @@ class Actor {
     }
     this.effect();
     setTimeout(() => {
-      spellContext.clearRect(this.place.x - this.image.width / 4, this.place.y, spell.width, spell.height)
+      spellContext.clearRect(
+        this.place.x - this.image.width / 4,
+        this.place.y,
+        spell.width,
+        spell.height
+      );
     }, 500);
   }
   effect(time) {
-    this.clearImage()
+    this.clearImage();
     setTimeout(() => {
       this.clearImage();
       this.redraw();
-    }, time)
+    }, time);
   }
   damaged() {
     if (this.healPoints - ATTACK > 0) {
       this.healPoints -= ATTACK;
-      this.effect(50);
+      this.effect(EFFECT_DURATION);
     } else {
       this.loose();
     }
@@ -71,9 +92,9 @@ function createPlayer(gender, name) {
   const playerImg = new Image();
   const playerNumber = Math.ceil(Math.random() * PLAYER_NUM);
   playerImg.src = `./resources/images/player/hero_${gender}_${playerNumber}.png`;
-  playerImg.width = PLAYER_WIDTH;
-  playerImg.height = PLAYER_HEIGHT;
-  PLAYER = new Player(WRAP, CANVAS_HEIGHT - PLAYER_HEIGHT, 'player', playerImg, name);
+  playerImg.width = PLAYER_WIDTH * PX;
+  playerImg.height = PLAYER_HEIGHT * PX;
+  PLAYER = new Player(WRAP / 3, CANVAS_HEIGHT - PLAYER_HEIGHT - VERTICAL_WRAP, 'player', playerImg, name);
 }
 
 class Player extends Actor {
@@ -85,25 +106,34 @@ class Player extends Actor {
     this.healPoints = MAX_HEAL_POINTS;
   }
   drawImage() {
-    actorsContext.drawImage(this.image, this.place.x, this.place.y, this.image.width, this.image.height);
+    actorsContext.drawImage(
+      this.image,
+      this.place.x,
+      this.place.y,
+      this.image.width,
+      this.image.height
+    );
   }
   drawInfo() {
-    this.drawName(this.image.width / 2);
-    this.drawHP(0);
+    this.drawName(-this.image.width / 2);
+    this.drawHP(this.place.x);
     this.drawLevel();
   }
   drawLevel() {
-    actorsContext.font = `${20 * PX}px Verdana`;
-    actorsContext.fillStyle = "black";
-    actorsContext.textAlign = "center";
-    actorsContext.fillText(`(${this.score})`, this.place.x + this.image.width / 2 + 12 * this.name.length * PX, this.place.y - 15 * PX);
+    actorsContext.font = `${LVL_SIZE * PX}px Verdana`;
+    actorsContext.fillStyle = 'orange';
+    actorsContext.textAlign = 'center';
+    actorsContext.fillText(
+      this.score + 1,
+      CANVAS_WIDTH / 2 - this.score * PX,
+      LVL_WRAP * PX + LVL_SIZE * PX
+    );
   }
   win() {
     this.score += 1;
     createEnemy();
   }
   loose() {
-    alert(this.score)
     this.healPoints = MAX_HEAL_POINTS;
   }
   clearImage() {
@@ -126,35 +156,35 @@ class Enemy extends Actor {
     this.redraw();
   }
   drawInfo() {
-    this.drawName(this.image.width / 6);
+    this.drawName(this.name.length);
     this.drawHP(this.image.width / 3);
   }
   drawImage() {
     actorsContext.drawImage(
       this.image.legs,
-      this.place.x - BODY_WIDTH / 12,
-      this.place.y + BODY_HEIGHT + HEAD_HEIGHT / 3,
+      this.place.x - (BODY_WIDTH * PX) / 12,
+      this.place.y + BODY_HEIGHT * PX + (HEAD_HEIGHT * PX) / 3,
       this.image.legs.width,
       this.image.legs.heigth
     );
     actorsContext.drawImage(
       this.image.body,
-      this.place.x - BODY_WIDTH / 4.2,
-      this.place.y + HEAD_HEIGHT / 2,
+      this.place.x - (BODY_WIDTH * PX) / 4.2,
+      this.place.y + (HEAD_HEIGHT * PX) / 2,
       this.image.body.width,
       this.image.body.heigth
     );
     actorsContext.drawImage(
       this.image.head,
-      this.place.x - BODY_WIDTH / 50,
+      this.place.x - (BODY_WIDTH * PX) / 50,
       this.place.y,
       this.image.head.width,
       this.image.head.heigth
     );
     actorsContext.drawImage(
       this.image.weapon,
-      this.place.x - WEAPON_WIDTH,
-      this.place.y + HEAD_HEIGHT - WEAPON_HEIGHT / 3,
+      this.place.x - 0.9 * WEAPON_WIDTH * PX,
+      this.place.y + HEAD_HEIGHT * PX - WEAPON_HEIGHT / 2 * PX,
       this.image.weapon.width,
       this.image.weapon.heigth
     );
@@ -166,18 +196,23 @@ class Enemy extends Actor {
     createEnemy();
   }
   clearImage() {
-    actorsContext.clearRect(this.place.x - this.image.width / 2, this.place.y, this.image.width * 1.3, this.image.height);
+    actorsContext.clearRect(
+      this.place.x - this.image.width / 2,
+      this.place.y,
+      this.image.width * 1.3,
+      this.image.height
+    );
   }
 }
 
 function createEnemy() {
   const enemyImg = new Image();
-  enemyImg.width = ENEMY_WIDTH;
-  enemyImg.height = ENEMY_HEIGHT;
+  enemyImg.width = ENEMY_WIDTH * PX;
+  enemyImg.height = ENEMY_HEIGHT * PX;
   enemyDraw().then(([name, build]) => {
     ENEMY = new Enemy(
-      CANVAS_WIDTH - ENEMY_WIDTH - WRAP,
-      CANVAS_HEIGHT - ENEMY_HEIGHT,
+      CANVAS_WIDTH - ENEMY_WIDTH - 4 * WRAP,
+      CANVAS_HEIGHT - ENEMY_HEIGHT - 0.8 * VERTICAL_WRAP,
       'enemy',
       enemyImg,
       name,
@@ -186,5 +221,5 @@ function createEnemy() {
   });
 }
 
-createPlayer('male', 'Pasha');
+createPlayer('female', 'elostryy');
 createEnemy();

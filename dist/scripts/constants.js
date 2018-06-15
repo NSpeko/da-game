@@ -6,12 +6,21 @@ let CANVAS_WIDTH = document.getElementById('gameWindow').offsetWidth;;
 actorsCanvas.style.left = `-${CANVAS_WIDTH}px`;
 const getScale = () => CANVAS_WIDTH / 800
 let PX = getScale();
-let CANVAS_HEIGHT = 350 * PX;
+let CANVAS_HEIGHT = 350;
+const NAME_SIZE = 25;
+const HP_WRAP = 55;
+const NAME_WRAP = 15;
+const HP_LINE_HEIGHT = 10;
+const EFFECT_DURATION = 50;
+const LVL_SIZE = 50;
+const LVL_WRAP = 10;
 
 function rebuildCanvas() {
   CANVAS_WIDTH = document.getElementById('gameWindow').offsetWidth;
   PX = getScale();
   CANVAS_HEIGHT = 350 * PX;
+  WRAP = CANVAS_WIDTH / 15;
+  VERTICAL_WRAP = CANVAS_HEIGHT / 3;
   HEAD_WIDTH = ENEMY_WIDTH / 2.5;
   HEAD_HEIGHT = ENEMY_HEIGHT / 2.5;
   BODY_WIDTH = ENEMY_WIDTH;
@@ -19,19 +28,18 @@ function rebuildCanvas() {
   WEAPON_WIDTH = ENEMY_WIDTH / 2;
   WEAPON_HEIGHT = ENEMY_HEIGHT / 2;
   LEGS_WIDTH = ENEMY_WIDTH / 1.5;
-  LEGS_HEIGHT = ENEMY_HEIGHT / 3
-  HEAL = 30 * PX;
-  ATTACK = 60 * PX;
+  LEGS_HEIGHT = ENEMY_HEIGHT / 3;
   actorsCanvas.style.left = `-${CANVAS_WIDTH}px`;
   spellCanvas.width = CANVAS_WIDTH;
   spellCanvas.height = CANVAS_HEIGHT;
   actorsCanvas.width = CANVAS_WIDTH;
   actorsCanvas.height = CANVAS_HEIGHT;
-  if (ENEMY) ENEMY.rebuild(CANVAS_WIDTH - ENEMY_WIDTH - WRAP, CANVAS_HEIGHT - ENEMY_HEIGHT);
-  if (PLAYER) PLAYER.rebuild(WRAP, CANVAS_HEIGHT - PLAYER_HEIGHT);
+  if (ENEMY) ENEMY.rebuild(CANVAS_WIDTH - ENEMY_WIDTH - 4 * WRAP, CANVAS_HEIGHT - ENEMY_HEIGHT - 0.8 * VERTICAL_WRAP);
+  if (PLAYER) PLAYER.rebuild(WRAP / 3, CANVAS_HEIGHT - PLAYER_HEIGHT - VERTICAL_WRAP);
+
 }
-let PLAYER_WIDTH = 150 * PX;
-let PLAYER_HEIGHT = 150 * PX;
+let PLAYER_WIDTH = 150;
+let PLAYER_HEIGHT = 150;
 let ENEMY_WIDTH = 1.3 * PLAYER_WIDTH;
 let ENEMY_HEIGHT = 1.3 * PLAYER_HEIGHT;
 let HEAD_WIDTH = ENEMY_WIDTH / 2.5;
@@ -41,11 +49,12 @@ let BODY_HEIGHT = ENEMY_HEIGHT / 2;
 let WEAPON_WIDTH = ENEMY_WIDTH / 2;
 let WEAPON_HEIGHT = ENEMY_HEIGHT / 2;
 let LEGS_WIDTH = ENEMY_WIDTH / 1.5;
-let LEGS_HEIGHT = ENEMY_HEIGHT / 3
-let HEAL = 30 * PX;
-let ATTACK = 60 * PX;
-let WRAP = 0 * PX;
+let LEGS_HEIGHT = ENEMY_HEIGHT / 3;
+let WRAP = CANVAS_WIDTH / 15;
+let VERTICAL_WRAP = CANVAS_HEIGHT / 3;
 
+const HEAL = 30;
+const ATTACK = 60;
 const ENEMY_PATH = `./resources/images/enemy`;;
 const MAX_HEAL_POINTS = 300 * PX;
 
