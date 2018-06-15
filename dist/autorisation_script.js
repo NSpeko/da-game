@@ -1,4 +1,5 @@
 window.onload=function () {
+    document.getElementsByClassName('game-menu')[0].style.top='-'+CANVAS_HEIGHT+'px';
     if (!localStorage.user) {
         document.getElementById('logInModalOpener').click();
     }

@@ -22,7 +22,6 @@ body{
 }
 .game-menu{
     position: relative;
-    top: -500px;
     z-index: 100;
     display: inline-flex;
 }

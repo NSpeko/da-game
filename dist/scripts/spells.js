@@ -1,3 +1,5 @@
+let SPELLLIST = [];
+
 class Spell {
   constructor(name, imageSrc, soundSrc, width, height, stepX, stepY) {
     this.name = name;
@@ -10,6 +12,7 @@ class Spell {
       x: stepX,
       y: stepY
     }
+    SPELLLIST.push(this);
   }
 }
 
@@ -48,8 +51,8 @@ class Heal extends Spell {
   }
 }
 
-const fireball = new flyingSpell('Fireball', './resources/images/boom.png', './resources/audio/meteor.mp3', 100, 100, 12, 6);
-const meteor = new dropSpell('Meteor', './resources/images/boom.png', './resources/audio/bzing.ogg', 200, 200, 12);
-const arrow = new straightSpell('Arrow', './resources/images/boom.png', './resources/audio/meteor.wav', 100, 100, 12);
-const star = new jigglingSpell('Star', './resources/images/boom.png', './resources/audio/meteor.wav', 100, 100, 12, 8);
-//const fireSpell = new straightSpell('./resources/images/boom.png', 50, 50, 12);
+const fireball = new flyingSpell('Fireball', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.mp3', 100 * PX, 100 * PX, 12 * PX, 6 * PX);
+const meteor = new dropSpell('Meteor', './resources/images/spell/fireball.gif', './resources/audio/spell/bzing.ogg', 200 * PX, 200 * PX, 12 * PX);
+const arrow = new straightSpell('Arrow', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.wav', 100 * PX, 100 * PX, 12 * PX);
+const star = new jigglingSpell('Star', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.wav', 100 * PX, 100 * PX, 12 * PX, 8 * PX);
+const heal = new Heal('Heal', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.wav', 400 * PX, 400 * PX);
