@@ -30,11 +30,31 @@ const getEnemy = () => {
 async function enemyDraw() {
   const enemy = await getEnemy();
   const name = `${enemy.adj} ${enemy.type} ${enemy.name}`;
-  ENEMY.name = name;
-  ENEMY.head = enemy.head;
-  ENEMY.body = enemy.body;
-  ENEMY.weapon = enemy.weapon;
-  ENEMY.legs = enemy.legs;
+  const headSrc = `${ENEMY_PATH}/head/head_${enemy.head}.png`;
+  let head = new Image();
+  head.width = HEAD_WIDTH;
+  head.heigth = HEAD_HEIGHT;
+  head.src = headSrc;
+  const bodySrc = `${ENEMY_PATH}/torso/torso_${enemy.body}.png`;
+  let body = new Image();
+  body.width = BODY_WIDTH;
+  body.heigth = BODY_HEIGHT;
+  body.src = bodySrc;
+  const weaponSrc = `${ENEMY_PATH}/weapon/weapon_${enemy.weapon}.png`;
+  let weapon = new Image();
+  weapon.width = WEAPON_WIDTH;
+  weapon.heigth = WEAPON_HEIGHT;
+  weapon.src = weaponSrc;
+  const legsSrc = `${ENEMY_PATH}/legs/legs_${enemy.legs}.png`;
+  let legs = new Image();
+  legs.width = LEGS_WIDTH;
+  legs.heigth = LEGS_HEIGHT;
+  legs.src = legsSrc;
+  const build = {
+    head: head,
+    body: body,
+    weapon: weapon,
+    legs: legs
+  }
+  return [name, build]
 }
-
-enemyDraw();

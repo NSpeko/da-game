@@ -1,170 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>da-game</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
 </head>
+
 <body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
-<header class="bg-dark fixed-top">
+  <header class="bg-dark fixed-top">
     <div class="container" style="max-height: inherit">
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-            <a class="navbar-brand" href="index.html">Da-game</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="index.html">Da-game</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html" target="_parent">About</a>
+            </li>
+            <li class="nav-item">
+              <!-- Button to Open the Modal -->
+              <a id="logInModalOpener" class="nav-link" href="#logInModal" data-toggle="modal" data-target="#logInModal">
+                Log in
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="modal fade text-dark" id="logInModal">
+    <div class="modal-dialog modal-sm">
+      <script src="autorisation_script.js"></script>
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">
+            Log in
+          </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <form name="loginForm" onsubmit="logUserInByForm()" method="post">
+          <div class="modal-body ">
+            <label for="userName">Name:</label>
+            <input id="userName" class="form-control " type="text" name="Name" value="">
+            <label for="userEmail">Email:</label>
+            <input id="userEmail" class="form-control " type="email" name="Email" value="">
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <input class="btn btn-primary float-left" type="submit" value="Submit" />
+            <button type="button" class="btn btn-danger" data-dismiss="modal">
+              Close
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html" target="_parent">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- Button to Open the Modal -->
-                        <a id="logInModalOpener" class="nav-link" href="#logInModal" data-toggle="modal" data-target="#logInModal">
-                            Log in
-                        </a>
-                    </li>
-                </ul>
+          </div>
 
-            </div>
-        </nav>
+        </form>
+      </div>
     </div>
-</header>
-
-<div class="modal fade text-dark" id="logInModal">
+  </div>
+  <div class="modal fade text-dark" id="solveGameTaskModal">
     <div class="modal-dialog modal-sm">
-        <script src="autorisation_script.js"></script>
-        <div class="modal-content">
+      <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">
-                    Log in
-                </h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <form name="loginForm" onsubmit="logUserInByForm()" method="post">
-                <div class="modal-body ">
-                    <label for="userName">Name:</label>
-                    <input id="userName" class="form-control " type="text" name="Name" value="" >
-                    <label for="userEmail">Email:</label>
-                    <input id="userEmail" class="form-control " type="email" name="Email" value="" >
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <input class="btn btn-primary float-left" type="submit"
-                           value="Submit"/>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">
-                        Close
-                    </button>
-                </div>
-
-            </form>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">
+            Task
+          </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-    </div>
-</div>
-<div class="modal fade text-dark" id="solveGameTaskModal">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">
-                    Task
-                </h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body ">
-                <div id="userModalTaskContainer"></div>
-                <label for="usersTaskAnswer">Your answer:</label>
-                <input id="usersTaskAnswer" class="form-control " type="text" name="Name" value="" >
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary float-left" data-dismiss="modal">Submit</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
-                    Close
-                </button>
-            </div>
+        <!-- Modal body -->
+        <div class="modal-body ">
+          <div id="userModalTaskContainer"></div>
+          <label for="usersTaskAnswer">Your answer:</label>
+          <input id="usersTaskAnswer" class="form-control " type="text" name="Name" value="">
         </div>
-    </div>
-</div>
 
-<div id="gameWindow" class="container main-game-container">
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary float-left" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameWindow" class="container main-game-container">
     <div id="onlyLoggedUserContent" style="display: none;">
-    <div  class="game-block">
+      <div class="game-block">
         <div class="game-canvas-container">
-            <canvas id="spellCanvas" class="canvas-sheet skills-sheet-canvas"></canvas>
-            <canvas id="actors" class="canvas-sheet actors-sheet-canvas"></canvas>
+          <canvas id="spellCanvas" class="canvas-sheet skills-sheet-canvas"></canvas>
+          <canvas id="actorsCanvas" class="canvas-sheet actors-sheet-canvas"></canvas>
         </div>
-    </div>
-    <div class="game-menu">
+      </div>
+      <div class="game-menu">
         <script src="scripts/custom-collapse-script.js"></script>
         <button type="button" class="btn btn-primary" onclick="collapseGameMenu();">Menu</button>
         <div id="gameMenu" class="game-menu-categories hidden">
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    Attack
-                </button>
-                <div class="dropdown-menu game-menu-dropdown-options">
-                    <button class="spellButton btn btn-primary">enemy!</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
-                </div>
+          <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Attack
+            </button>
+            <div class="dropdown-menu game-menu-dropdown-options">
+              <button class="spellButton btn btn-primary">enemy!</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#solveGameTaskModal">Solve task</button>
             </div>
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    Heal
-                </button>
-                <div class="dropdown-menu game-menu-dropdown-options">
-                    <button class="spellButton btn btn-primary">enemy!</button>
-                </div>
+          </div>
+          <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Heal
+            </button>
+            <div class="dropdown-menu game-menu-dropdown-options">
+              <button class="spellButton btn btn-primary">enemy!</button>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
     <script src="./scripts/constants.js"></script>
     <script src="./scripts/spells.js"></script>
     <script src="./scripts/scripts.js"></script>
     <script src="./scripts/monster/monster-creation.js"></script>
     <script src="./scripts/actors.js"></script>
     <script src="./scripts/spellCast.js"></script>
-</div>
+  </div>
 </body>
+
 </html>
