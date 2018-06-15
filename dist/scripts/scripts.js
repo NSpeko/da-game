@@ -14,7 +14,7 @@ const spellbuttons = document.getElementsByClassName('spellButton');
 window.onresize = rebuildCanvas();
 setInterval(function () {
   rebuildCanvas();
-}, 1000)
+}, 500)
 
 function justSpell(spell) {
   spellbuttons[0].addEventListener('click', function () {
