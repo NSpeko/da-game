@@ -1,9 +1,3 @@
-let actorsCanvas = document.getElementById('actors')
-actorsCanvas.width = CANVAS_WIDTH;
-actorsCanvas.height = CANVAS_HEIGHT;
-actorsCanvas.style.left = '-'+CANVAS_WIDTH+'px';
-let actorsContext = actorsCanvas.getContext('2d');
-
 class Actor {
     constructor(xLoc, yLoc, type, name) {
         this.place = {

@@ -11,10 +11,11 @@ const getJSON = url => new Promise((resolve) => {
 
 const spellbuttons = document.getElementsByClassName('spellButton');
 
-let spellCanvas = document.getElementById('spellCanvas')
-spellCanvas.width = CANVAS_WIDTH;
-spellCanvas.height = CANVAS_HEIGHT;
-let spellContext = spellCanvas.getContext('2d');
+window.onresize = rebuildCanvas();
+setInterval(function () {
+  ENEMY.redraw();
+  PLAYER.redraw();
+}, 1000)
 
 function justSpell(spell) {
   spellbuttons[0].addEventListener('click', function () {
