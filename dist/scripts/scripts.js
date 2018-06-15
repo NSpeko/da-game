@@ -13,8 +13,7 @@ const spellbuttons = document.getElementsByClassName('spellButton');
 
 window.onresize = rebuildCanvas();
 setInterval(function () {
-  ENEMY.redraw();
-  PLAYER.redraw();
+  rebuildCanvas();
 }, 1000)
 
 function justSpell(spell) {

@@ -16,6 +16,13 @@ class Actor {
         this.clearImage();
         this.drawImage();
     }
+    rebuild(rebuildedX, rebuildedY) {
+        this.place = {
+            x: rebuildedX,
+            y: rebuildedY
+        }
+        this.redraw();
+    }
     heal(spell) {
         spellContext.drawImage(spell.image, this.place.x - this.image.width / 4, this.place.y, spell.width, spell.height);
         if (this.healPoints <= MAX_HEAL_POINTS - HEAL) {
