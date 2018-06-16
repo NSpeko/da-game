@@ -24,7 +24,4 @@ const getTranslation = () => {
 
 async function drawTranslations() {
   const [unTranslated, translated] = await getTranslation();
-  console.log(`${unTranslated} - ${translated}`);
 }
-
-drawTranslations();

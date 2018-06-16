@@ -70,7 +70,7 @@
 
           <!-- Modal footer -->
           <div class="modal-footer">
-            <input class="btn btn-primary float-left" type="submit" value="Submit" />
+            <input class="btn btn-primary float-left" value="Submit" />
             <button type="button" class="btn btn-danger" data-dismiss="modal">
               Close
             </button>
@@ -83,27 +83,20 @@
   <div class="modal fade text-dark" id="solveGameTaskModal">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
-
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">
             Task
           </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-
         <!-- Modal body -->
         <div class="modal-body ">
           <div id="userModalTaskContainer">
           </div>
         </div>
-
         <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary float-left" data-dismiss="modal">Submit</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-            Close
-          </button>
+        <div class="modal-footer" id='modalFooter'>
+          <!-- <button type="button" class="btn btn-primary float-left" id='submitTask' data-dismiss="modal">Submit</button> -->
         </div>
       </div>
     </div>
@@ -121,7 +114,6 @@
         <script src="scripts/custom_collapse_script.js"></script>
         <button type="button" class="btn btn-primary" onclick="collapseGameMenu();">Menu</button>
         <div id="gameMenu" class="game-menu-categories hidden">
-            <script src="scripts/spell_task_menu_script.js"></script>
           <div class="dropdown">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
               Attack
@@ -140,14 +132,16 @@
         </div>
       </div>
     </div>
+    <script src="./scripts/getJSON.js"></script>
     <script src="./scripts/constants.js"></script>
     <script src="./scripts/spells.js"></script>
-    <script src="./scripts/scripts.js"></script>
+    <script src="./scripts/modals.js"></script>
+    <script src="./scripts/tasks/counting/counting.js"></script>
+    <script src="./scripts/tasks/translation/translation.js"></script>
     <script src="./scripts/monster/monster-creation.js"></script>
+    <script src="./scripts/scripts.js"></script>
     <script src="./scripts/actors.js"></script>
     <script src="./scripts/spellCast.js"></script>
-    <script src="./scripts/tasks/translation/translation.js"></script>
-    <script src="./scripts/tasks/counting/counting.js"></script>
   </div>
 </body>
 

@@ -1,50 +1,11 @@
-const getJSON = url => new Promise((resolve) => {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
-  xhr.onload = function sendData() {
-    if (this.status === 200) {
-      resolve(this.response);
-    }
-  };
-  xhr.send();
-});
-
-const spellbuttons = document.getElementsByClassName('spellButton');
-
 window.onresize = rebuildCanvas();
 setInterval(function () {
   rebuildCanvas();
-}, 500)
-
-function justSpell(spell) {
-  // spellbuttons[0].addEventListener('click', function () {
-  //   if (confirm('solved?')) createSpell(spell, PLAYER, ENEMY);
-  //   else {
-  //     enemyAttack();
-  //   }
-  // })
-  // spellbuttons[1].addEventListener('click', function () {
-  //   enemyAttack();
-  // })
-}
-
-function solveTask(spell, start, target) {
-  const randomTask = ~~(Math.random() * TASKSLIST.length);
-  if (!showTask(TASKSLIST[randomTask])) {
-    enemyAttack();
-  } else {
-    createSpell(spell, start, target);
-  }
-}
+}, 500);
 
 function fullReload() {
   createEnemy();
   createPlayer('male', 'faustav'); //createPlayerDialogue(); 
-}
-
-function showTask(task) {
-  console.log(task);
-  return Math.round(Math.random());
 }
 
 function addSpellButtons() {
@@ -57,20 +18,19 @@ function addSpellButtons() {
     spellElement.textContent = el.name;
     spellElement.setAttribute('data-toggle', 'modal');
     spellElement.setAttribute('data-target', '#solveGameTaskModal');
-    spellElement.onclick = arithmeticTaskWindowLoader(); //#Funcctions declared in json, implemented in another script file
     if (el.type === 'heal') {
       spellElement.addEventListener('click', function () {
-        solveTask(el, PLAYER, PLAYER);
+        taskWindowLoader(el, PLAYER, PLAYER);
       });
       healMenu.appendChild(spellElement);
     } else {
       spellElement.addEventListener('click', function () {
-        solveTask(el, PLAYER, ENEMY);
+        taskWindowLoader(el, PLAYER, ENEMY);
       });
       spellMenu.appendChild(spellElement);
     }
   });
 }
 
-justSpell(fireball);
-addSpellButtons()
+//justSpell(fireball);
+addSpellButtons();
