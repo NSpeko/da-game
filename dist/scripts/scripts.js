@@ -29,15 +29,21 @@ function justSpell(spell) {
 }
 
 function solveTask(spell, start, target) {
-  const randomTask = ~~(Math.random() * TASK_NUM);
-  if (!showTask(randomTask)) {
+  const randomTask = ~~(Math.random() * TASKSLIST.length);
+  if (!showTask(TASKSLIST[randomTask])) {
     enemyAttack();
   } else {
     createSpell(spell, start, target);
   }
 }
 
-function showTask() {
+function fullReload() {
+  createEnemy();
+  createPlayer('male', 'faustav'); //createPlayerDialogue(); 
+}
+
+function showTask(task) {
+  console.log(task);
   return Math.round(Math.random());
 }
 

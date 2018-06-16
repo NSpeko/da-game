@@ -55,12 +55,12 @@ let VERTICAL_WRAP = CANVAS_HEIGHT / 3;
 
 const HEAL = 30;
 const ATTACK = 60;
-const ENEMY_PATH = `./resources/images/enemy`;;
+const ENEMY_PATH = `./resources/images/enemy`;
 const MAX_HEAL_POINTS = 300 * PX;
 
 const PLAYER_NUM = 1;
 const ENEMY_NUM = 1;
-const TASK_NUM = 2;
+const TASKSLIST = ['counting', 'translation'];
 
 let PLAYER = null;
 let ENEMY = null;
