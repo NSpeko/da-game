@@ -225,5 +225,12 @@ function createEnemy() {
   });
 }
 
-createPlayer('female', 'elostryy');
-createEnemy();
+function drawHeroes() {
+  let hero = JSON.parse(localStorage.getItem('user'));
+  if (hero.gender && hero.name) {
+    createPlayer(hero.gender, hero.name);
+    createEnemy();
+  }
+}
+
+drawHeroes();

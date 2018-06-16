@@ -21,8 +21,6 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname + '/dist/about.html'));
 });
 
-//app.post('/login', function (req, res) {})
-
 app.listen(3000, function () {
   console.log('Server running at http://localhost:3000/');
 });
