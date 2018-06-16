@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "run": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,9 @@
     "webpack-cli": "^3.0.3"
   },
   "dependencies": {
-    "lodash": "^4.17.10"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "path": "^0.12.7"
   }
 }
