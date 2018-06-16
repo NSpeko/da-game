@@ -12,18 +12,24 @@ async function addTask(spell, start, target) {
   let answer;
   switch (randomTask) {
     case 'counting':
-      {
-        toDo = 'Count';
-        type = 'number';
-        [task, answer] = countingTask();
-        break;
-      }
+      toDo = 'Count';
+      type = 'number';
+      [task, answer] = countingTask();
+      break;
     case 'translation':
-      {
-        toDo = 'Translate';
-        type = 'text';
-        [task, answer] = await getTranslation();
-      }
+      toDo = 'Translate';
+      type = 'text';
+      [task, answer] = await getTranslation();
+      break;
+    case 'speech':
+      toDo = 'Write what you hear';
+      type = 'text';
+      task = '';
+      answer = await getSpeechWord();
+      setInterval(function () {
+        speakToMe(answer)
+      }, 1000);
+      break;
   }
   createTaskQuiz(toDo, task);
   createSolveElement(type);
@@ -34,16 +40,25 @@ async function addTask(spell, start, target) {
 
 }
 
+function speakToMe(word) {
+  const synth = window.speechSynthesis;
+  synth.getVoices();
+  const wordSpeech = new SpeechSynthesisUtterance(word);
+  synth.speak(wordSpeech);
+}
 
 function isSolved(answer, spell, start, target) {
   const userAnswer = document.getElementById('userAnswer').value;
+  const tasksQuiz = document.getElementById('taskQuiz');
+  tasksQuiz.style.color = 'red';
   if (answer == userAnswer) {
-    alert(`RIGHT!`);
-    createSpell(spell, start, target);
+    tasksQuiz.innerText = `RIGHT!`;
+    setInterval(createSpell(spell, start, target), MODAL_DELATION);
   } else {
-    alert(`WRONG! Answer is '${answer}'`);
-    enemyAttack();
+    tasksQuiz.innerText = `WRONG! Answer is '${answer}'`;
+    setInterval(enemyAttack(), MODAL_DELATION);
   }
+  tasksQuiz.style.color = 'black';
 }
 
 function createSubmitButton() {
@@ -57,6 +72,7 @@ function createSubmitButton() {
 
 function createTaskQuiz(toDo, task) {
   const tempTasksQuiz = document.createElement('h3');
+  tempTasksQuiz.setAttribute('id', 'taskQuiz');
   tempTasksQuiz.innerText = `${toDo}: ${task}`;
   document.getElementById('userModalTaskContainer').appendChild(tempTasksQuiz);
 }

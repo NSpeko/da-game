@@ -60,9 +60,10 @@ const MAX_HEAL_POINTS = 300 * PX;
 
 const PLAYER_NUM = 1;
 const ENEMY_NUM = 1;
-const TASKSLIST = ['counting', 'translation'];
+const TASKSLIST = ['counting', 'translation', 'speech'];
 const MAX_COUNTING_NUM = 20;
-const SIGN_ARRAY = ['-', '+', '*']
+const SIGN_ARRAY = ['-', '+', '*'];
+const MODAL_DELATION = 2000;
 
 let PLAYER = null;
 let ENEMY = null;
