@@ -61,6 +61,8 @@ const MAX_HEAL_POINTS = 300 * PX;
 const PLAYER_NUM = 1;
 const ENEMY_NUM = 1;
 const TASKSLIST = ['counting', 'translation'];
+const MAX_COUNTING_NUM = 20;
+const SIGN_ARRAY = ['-', '+', '*']
 
 let PLAYER = null;
 let ENEMY = null;
