@@ -1,3 +1,3 @@
-function collapseGameMenu(){
-    document.getElementById('gameMenu').classList.toggle('hidden');
+function collapseGameMenu() {
+  document.getElementById('gameMenu').classList.toggle('hidden');
 }

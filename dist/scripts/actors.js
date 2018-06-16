@@ -94,7 +94,13 @@ function createPlayer(gender, name) {
   playerImg.src = `./resources/images/player/hero_${gender}_${playerNumber}.png`;
   playerImg.width = PLAYER_WIDTH * PX;
   playerImg.height = PLAYER_HEIGHT * PX;
-  PLAYER = new Player(WRAP / 3, CANVAS_HEIGHT - PLAYER_HEIGHT - VERTICAL_WRAP, 'player', playerImg, name);
+  PLAYER = new Player(
+    WRAP / 3,
+    CANVAS_HEIGHT - PLAYER_HEIGHT - VERTICAL_WRAP,
+    'player',
+    playerImg,
+    name
+  );
 }
 
 class Player extends Actor {
@@ -115,7 +121,7 @@ class Player extends Actor {
     );
   }
   drawInfo() {
-    this.drawName(-this.image.width / 2);
+    this.drawName(-this.image.width / 3);
     this.drawHP(this.place.x);
     this.drawLevel();
   }
@@ -184,15 +190,13 @@ class Enemy extends Actor {
     actorsContext.drawImage(
       this.image.weapon,
       this.place.x - 0.9 * WEAPON_WIDTH * PX,
-      this.place.y + HEAD_HEIGHT * PX - WEAPON_HEIGHT / 2 * PX,
+      this.place.y + HEAD_HEIGHT * PX - (WEAPON_HEIGHT / 2) * PX,
       this.image.weapon.width,
       this.image.weapon.heigth
     );
   }
   loose() {
     PLAYER.win();
-    console.log(PLAYER.score);
-    console.log('new monster');
     createEnemy();
   }
   clearImage() {
