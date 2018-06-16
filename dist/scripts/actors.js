@@ -227,7 +227,7 @@ function createEnemy() {
 
 function drawHeroes() {
   let hero = JSON.parse(localStorage.getItem('user'));
-  if (hero.gender && hero.name) {
+  if (hero && hero.gender && hero.name) {
     createPlayer(hero.gender, hero.name);
     createEnemy();
   }

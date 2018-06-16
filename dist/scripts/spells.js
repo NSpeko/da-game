@@ -51,7 +51,7 @@ class Heal extends Spell {
   }
 }
 
-const fireball = new flyingSpell('Fireball', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.mp3', 100, 100, 12, 6);
+const fireball = new flyingSpell('Fireball', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.mp3', 100, 100, 10, 20);
 const meteor = new dropSpell('Meteor', './resources/images/spell/fireball.gif', './resources/audio/spell/bzing.ogg', 200, 200, 12);
 const arrow = new straightSpell('Arrow', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.wav', 100, 100, 12);
 const star = new jigglingSpell('Star', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.wav', 100, 100, 12, 8);

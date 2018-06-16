@@ -1,40 +1,51 @@
-body{
-    font-family: Verdana;
+body {
+  font-family: Verdana;
 }
-.main-game-container{
-    margin-top: 4rem;
-    background: url("./resources/images/Background.png") no-repeat center center;
-    background-size: cover;
+
+.main-game-container {
+  margin-top: 4rem;
+  background: url("./resources/images/Background.png") no-repeat center center;
+  background-size: cover;
+  width: 80vw;
 }
-.game-block{
+
+.game-block {}
+
+.game-canvas-container {
+  display: flex;
 }
-.game-canvas-container{
-    display: flex;
+
+.canvas-sheet {
+  position: relative;
 }
-.canvas-sheet{
-    position: relative;
+
+.skills-sheet-canvas {
+  z-index: 1;
 }
-.skills-sheet-canvas{
-    z-index: 1;
+
+.actors-sheet-canvas {
+  z-index: 2;
 }
-.actors-sheet-canvas{
-    z-index: 2;
+
+.game-menu {
+  position: relative;
+  z-index: 100;
+  display: inline-flex;
 }
-.game-menu{
-    position: relative;
-    z-index: 100;
-    display: inline-flex;
+
+.game-menu button {
+  margin: 0 .3rem;
 }
-.game-menu button{
-    margin: 0 .3rem;
+
+.game-menu-categories {
+  display: inline-flex;
 }
-.game-menu-categories{
-    display: inline-flex;
+
+.game-menu-dropdown-options {
+  max-height: 9rem;
+  overflow: auto;
 }
-.game-menu-dropdown-options{
-    max-height: 9rem;
-    overflow: auto;
-}
-.hidden{
-    visibility: hidden;
+
+.hidden {
+  visibility: hidden;
 }
