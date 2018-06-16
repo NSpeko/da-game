@@ -55,7 +55,9 @@ function addSpellButtons() {
     spellElement.setAttribute('name', el.name);
     spellElement.setAttribute('class', 'btn btn-primary');
     spellElement.textContent = el.name;
-    spellElement.setAttribute('modal', 'modal');
+    spellElement.setAttribute('data-toggle', 'modal');
+    spellElement.setAttribute('data-target', '#solveGameTaskModal');
+    spellElement.onclick = arithmeticTaskWindowLoader(); //#Funcctions declared in json, implemented in another script file
     if (el.type === 'heal') {
       spellElement.addEventListener('click', function () {
         solveTask(el, PLAYER, PLAYER);
