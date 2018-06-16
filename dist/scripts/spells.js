@@ -55,4 +55,4 @@ const fireball = new flyingSpell('Fireball', './resources/images/spell/fireball.
 const meteor = new dropSpell('Meteor', './resources/images/spell/fireball.gif', './resources/audio/spell/bzing.ogg', 200, 200, 12);
 const arrow = new straightSpell('Arrow', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.wav', 100, 100, 12);
 const star = new jigglingSpell('Star', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.wav', 100, 100, 12, 8);
-const heal = new Heal('Heal', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.mp3', 200, 200);
+const heal = new Heal('Heal', './resources/images/spell/heal.png', './resources/audio/spell/meteor.mp3', 200, 200);

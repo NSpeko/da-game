@@ -9,7 +9,10 @@ body {
   width: 80vw;
 }
 
-.game-block {}
+.image-iside image {
+  width: 10;
+  height: 10;
+}
 
 .game-canvas-container {
   display: flex;
@@ -43,7 +46,8 @@ body {
 
 .game-menu-dropdown-options {
   max-height: 9rem;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto
 }
 
 .hidden {
