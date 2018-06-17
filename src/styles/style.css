@@ -1,3 +1,22 @@
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+
+.loader03 {
+  width: 16rem;
+  height: 16rem;
+  border: 1.5rem solid transparent;
+  border-top-color: #0052ec;
+  border-bottom-color: #0052ec;
+  border-radius: 50%;
+  position: relative;
+  animation: loader-rotate 1s linear infinite;
+  top: 50%;
+  margin: 12rem auto 0;
+}
+
 body {
   font-family: Verdana;
 }
@@ -68,6 +87,10 @@ body {
   max-height: 9rem;
   overflow-x: hidden;
   overflow-y: auto
+}
+
+.not-displayed{
+  display: none;
 }
 
 .hidden {

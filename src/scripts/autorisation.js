@@ -3,7 +3,8 @@ window.onload = function () {
   if (!localStorage.user) {
     document.getElementById('logInModalOpener').click();
   } else {
-    document.getElementById('onlyLoggedUserContent').style.display = 'block';
+      $('body').toggleClass('bg-secondary');
+      pageLoaderSpinnerFunction();
   }
 }
 
@@ -18,7 +19,8 @@ function logUserIn(name, gender) {
   const user = new User(name, gender);
   if (user.name && user.gender) {
     localStorage.user = JSON.stringify(user);
-    document.getElementById('onlyLoggedUserContent').style.display = 'block';
+      $('body').toggleClass('bg-secondary');
+    pageLoaderSpinnerFunction();
   }
   drawHeroes();
 }
