@@ -26,9 +26,9 @@ async function addTask(spell, start, target) {
       type = 'text';
       task = '';
       answer = await getSpeechWord();
-      setInterval(function () {
+      setTimeout(function () {
         speakToMe(answer)
-      }, 1000);
+      }, SPEECH_DELATION);
       break;
   }
   createTaskQuiz(toDo, task);

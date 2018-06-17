@@ -70,6 +70,7 @@ const TASKSLIST = ['counting', 'translation', 'speech'];
 const MAX_COUNTING_NUM = 20;
 const SIGN_ARRAY = ['-', '+', '*'];
 const MODAL_DELATION = 2000;
+const SPEECH_DELATION = 1000;
 
 let PLAYER = null;
 let ENEMY = null;
