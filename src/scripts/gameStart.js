@@ -13,8 +13,8 @@ window.onload = function () {
     document.getElementById('logInModalOpener').click();
   } else {
     $('body').toggleClass('bg-secondary');
-    pageLoaderSpinnerFunction();
   }
+  pageLoaderSpinnerFunction();
 }
 
 window.onresize = Constants.rebuildCanvas();
