@@ -63,6 +63,7 @@ const ENEMY_PATH = `../resources/images/enemy`;
 const SPELL_IMAGE_PATH = `../resources/images/spell/`;
 const SPELL_SOUND_PATH = `../resources/audio/spell/`;
 const MAX_HEAL_POINTS = 300 * PX;
+const TOP_COUNT = 10;
 
 const PLAYER_NUM = 1;
 const ENEMY_NUM = 1;
