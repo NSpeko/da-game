@@ -74,7 +74,20 @@ body {
 }
 
 .staff-container {
-  display: inline-flex;
+  display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .inline-flex-container {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .inline-flex-container {
+    display: inline-flex;
+    width: 100%;
+  }
 }
 
 .carousel-inner img {
