@@ -1,3 +1,5 @@
+console.log('1')
+
 const spellCanvas = document.getElementById('spellCanvas')
 const spellContext = spellCanvas.getContext('2d');
 const actorsCanvas = document.getElementById('actors')
@@ -39,9 +41,8 @@ function rebuildCanvas() {
   spellCanvas.height = CANVAS_HEIGHT;
   actorsCanvas.width = CANVAS_WIDTH;
   actorsCanvas.height = CANVAS_HEIGHT;
-  if (ENEMY) ENEMY.rebuild(CANVAS_WIDTH * PX - 3.2 * ENEMY_WIDTH * PX - WRAP * PX, CANVAS_HEIGHT * PX - ENEMY_HEIGHT * PX - 3.8 * VERTICAL_WRAP * PX);
-  if (PLAYER) PLAYER.rebuild(WRAP * PX / 3, CANVAS_HEIGHT * PX - PLAYER_HEIGHT * PX - 4.5 * VERTICAL_WRAP * PX);
 }
+
 let PLAYER_WIDTH = 150;
 let PLAYER_HEIGHT = 150;
 let ENEMY_WIDTH = 1.5 * PLAYER_WIDTH;
@@ -73,5 +74,50 @@ const SIGN_ARRAY = ['-', '+', '*'];
 const MODAL_DELATION = 2000;
 const SPEECH_DELATION = 800;
 
-let PLAYER = null;
-let ENEMY = null;
+export {
+  rebuildCanvas,
+  PLAYER_NUM,
+  ENEMY_NUM,
+  TASKSLIST,
+  MAX_COUNTING_NUM,
+  SIGN_ARRAY,
+  MODAL_DELATION,
+  SPEECH_DELATION,
+  PLAYER,
+  ENEMY,
+  HEAL,
+  ATTACK,
+  ENEMY_PATH,
+  SPELL_IMAGE_PATH,
+  SPELL_SOUND_PATH,
+  MAX_HEAL_POINTS,
+  TOP_COUNT,
+  WRAP,
+  VERTICAL_WRAP,
+  spellCanvas,
+  spellContext,
+  actorsCanvas,
+  actorsContext,
+  CANVAS_WIDTH,
+  PX,
+  CANVAS_HEIGHT,
+  NAME_SIZE,
+  HP_WRAP,
+  NAME_WRAP,
+  HP_LINE_HEIGHT,
+  EFFECT_DURATION,
+  LVL_SIZE,
+  LVL_WRAP,
+  PLAYER_WIDTH,
+  PLAYER_HEIGHT,
+  ENEMY_WIDTH,
+  ENEMY_HEIGHT,
+  HEAD_WIDTH,
+  HEAD_HEIGHT,
+  BODY_WIDTH,
+  BODY_HEIGHT,
+  WEAPON_WIDTH,
+  WEAPON_HEIGHT,
+  LEGS_WIDTH,
+  LEGS_HEIGHT
+};

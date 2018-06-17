@@ -1,6 +1,8 @@
-const speechFolder = document.currentScript.src.split('/').slice(0, -1).join('/');
-const speechDictionaryUrl = `${speechFolder}/speech-dictionary.json`;
+import {
+  getJSON
+} from '../../getJSON';
 
+const speechDictionaryUrl = `/resources/dictionaries/speech-dictionary.json`;
 const getSpeechWord = () => {
   const lang = 'eng';
   return getJSON(speechDictionaryUrl)
@@ -22,4 +24,8 @@ const getSpeechWord = () => {
 
 async function speech() {
   const word = await getSpeechWord();
+}
+
+export {
+  getSpeechWord
 }

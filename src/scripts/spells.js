@@ -1,16 +1,18 @@
+import * as Constants from './constants'
+
 let SPELLLIST = [];
 
 class Spell {
   constructor(name, imageSrc, soundSrc, width, height, stepX, stepY) {
     this.name = name;
     this.image = new Image();
-    this.image.src = `${SPELL_IMAGE_PATH}${imageSrc}`;
-    this.sound = new Audio(`${SPELL_SOUND_PATH}${soundSrc}`);
-    this.width = width * PX;
-    this.height = height * PX;
+    this.image.src = `${Constants.SPELL_IMAGE_PATH}${imageSrc}`;
+    this.sound = new Audio(`${Constants.SPELL_SOUND_PATH}${soundSrc}`);
+    this.width = width * Constants.PX;
+    this.height = height * Constants.PX;
     this.step = {
-      x: stepX * PX,
-      y: stepY * PX
+      x: stepX * Constants.PX,
+      y: stepY * Constants.PX
     }
     SPELLLIST.push(this);
   }
@@ -56,3 +58,7 @@ const meteor = new dropSpell('Meteor', `meteor.png`, `meteor.ogg`, 200, 200, 12)
 const arrow = new straightSpell('Arrow', `arrow.png`, `arrow.ogg`, 100, 100, 12);
 const star = new jigglingSpell('Star', `star.png`, `star.ogg`, 100, 100, 12, 8);
 const heal = new Heal('Heal', `heal.png`, `heal.ogg`, 200, 200);
+
+export {
+  SPELLLIST
+}

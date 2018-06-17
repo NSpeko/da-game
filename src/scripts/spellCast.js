@@ -1,3 +1,12 @@
+import {
+  SPELLLIST
+} from './spells'
+import {
+  PLAYER,
+  ENEMY
+} from './actors'
+import * as Constants from './constants'
+
 function createSpell(spell, start, target) {
   initSound(spell);
   let x = getStartX(start, target, spell);
@@ -9,16 +18,16 @@ function createSpell(spell, start, target) {
     stopSound(spell);
   } else {
     let spellInterval = setInterval(function () {
-      spellContext.clearRect(x, y, spell.width, spell.height);
+      Constants.spellContext.clearRect(x, y, spell.width, spell.height);
       [x, y] = getCoordinates(x, y, start, spell, distance);
-      spellContext.drawImage(spell.image, x, y, spell.width, spell.height);
+      Constants.spellContext.drawImage(spell.image, x, y, spell.width, spell.height);
       if (start.type === 'player') {
         if (x >= target.place.x && y >= target.place.y) {
-          endSpell(spell, target, spellInterval, x, y, spellContext)
+          endSpell(spell, target, spellInterval, x, y, Constants.spellContext)
         }
       } else {
         if (x <= target.place.x + target.image.width / 2 && y >= target.place.y) {
-          endSpell(spell, target, spellInterval, x, y, spellContext)
+          endSpell(spell, target, spellInterval, x, y, Constants.spellContext)
         }
       }
     }, 24)
@@ -144,4 +153,11 @@ function stopSound(spell) {
 function initSound(spell) {
   spell.sound.loop = true;
   spell.sound.play();
+}
+
+export {
+  enemyAttack
+}
+export {
+  createSpell
 }

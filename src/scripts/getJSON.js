@@ -8,3 +8,7 @@ const getJSON = url => new Promise((resolve) => {
   };
   xhr.send();
 });
+
+export {
+  getJSON
+}

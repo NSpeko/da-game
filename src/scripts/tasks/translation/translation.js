@@ -1,6 +1,8 @@
-const translationFolder = document.currentScript.src.split('/').slice(0, -1).join('/');
-const translationDictionaryUrl = `${translationFolder}/languages-dictionary.json`;
+import {
+  getJSON
+} from '../../getJSON'
 
+const translationDictionaryUrl = `/resources/dictionaries/languages-dictionary.json`;
 const getTranslation = () => {
   const fromLang = 'eng';
   const toLang = 'rus';
@@ -24,4 +26,8 @@ const getTranslation = () => {
 
 async function drawTranslations() {
   const [unTranslated, translated] = await getTranslation();
+}
+
+export {
+  getTranslation
 }

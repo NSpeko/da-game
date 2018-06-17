@@ -1,3 +1,18 @@
+import * as Constants from './constants'
+import {
+  countingTask
+} from './tasks/counting/counting'
+import {
+  getSpeechWord
+} from './tasks/speech/speech'
+import {
+  getTranslation
+} from './tasks/translation/translation'
+import {
+  createSpell,
+  enemyAttack
+} from './spellCast'
+
 function taskWindowLoader(spell, start, target) {
   $('#userModalTaskContainer').empty();
   $('#modalFooter').empty();
@@ -5,7 +20,7 @@ function taskWindowLoader(spell, start, target) {
 }
 
 async function addTask(spell, start, target) {
-  const randomTask = TASKSLIST[~~(Math.random() * TASKSLIST.length)];
+  const randomTask = Constants.TASKSLIST[~~(Math.random() * Constants.TASKSLIST.length)];
   let type;
   let toDo;
   let task;
@@ -28,7 +43,7 @@ async function addTask(spell, start, target) {
       answer = await getSpeechWord();
       setTimeout(function () {
         speakToMe(answer)
-      }, SPEECH_DELATION);
+      }, Constants.SPEECH_DELATION);
       createRepeatButton(answer);
       break;
   }
@@ -54,10 +69,10 @@ function isSolved(answer, spell, start, target) {
   tasksQuiz.style.color = 'red';
   if (answer == userAnswer) {
     tasksQuiz.innerText = `RIGHT!`;
-    setInterval(createSpell(spell, start, target), MODAL_DELATION);
+    setInterval(createSpell(spell, start, target), Constants.MODAL_DELATION);
   } else {
     tasksQuiz.innerText = `WRONG! Answer is '${answer}'`;
-    setInterval(enemyAttack(), MODAL_DELATION);
+    setInterval(enemyAttack(), Constants.MODAL_DELATION);
   }
   tasksQuiz.style.color = 'black';
 }
@@ -95,4 +110,8 @@ function createSolveElement(type) {
   tempElemet.setAttribute('id', 'userAnswer');
   tempElemet.setAttribute('type', `${type}`);
   document.getElementById('userModalTaskContainer').appendChild(tempElemet);
+}
+
+export {
+  taskWindowLoader
 }
