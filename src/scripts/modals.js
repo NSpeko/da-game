@@ -29,6 +29,7 @@ async function addTask(spell, start, target) {
       setTimeout(function () {
         speakToMe(answer)
       }, SPEECH_DELATION);
+      createRepeatButton(answer);
       break;
   }
   createTaskQuiz(toDo, task);
@@ -68,6 +69,17 @@ function createSubmitButton() {
   submitButton.setAttribute('data-dismiss', 'modal');
   submitButton.innerHTML = 'Submit';
   document.getElementById('modalFooter').appendChild(submitButton);
+}
+
+function createRepeatButton(word) {
+  const repeatButton = document.createElement('button');
+  repeatButton.setAttribute('class', 'btn btn-danger float-right');
+  repeatButton.setAttribute('id', 'repeatTask');
+  repeatButton.innerHTML = 'Repeat';
+  repeatButton.addEventListener('click', function () {
+    speakToMe(word);
+  })
+  document.getElementById('modalFooter').appendChild(repeatButton);
 }
 
 function createTaskQuiz(toDo, task) {
