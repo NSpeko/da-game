@@ -9,6 +9,13 @@ body {
   width: 80vw;
 }
 
+.main-score-container{
+  margin-top: 4rem;
+  width: 80vw;
+  text-align: center;
+  text-justify: distribute;
+}
+
 .image-iside image {
   width: 10;
   height: 10;

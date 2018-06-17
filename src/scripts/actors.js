@@ -140,6 +140,33 @@ class Player extends Actor {
     createEnemy();
   }
   loose() {
+    $('#onlyLoggedUserContent')[0].style.display='none';
+    let $gameWindow=$('#gameWindow');
+    $gameWindow.toggleClass('main-game-container main-score-container bg-light');
+      let allScores = [];
+      if (!!localStorage.scoreAll) {
+          allScores = JSON.parse(localStorage.scoreAll);
+      }
+      let currentScore = {name:PLAYER.name, score:PLAYER.score};
+      $gameWindow.append('<h3>Score List</h3>');
+      let tempCurrUserScoreOutput=document.createElement('P');
+      tempCurrUserScoreOutput.innerText=`Your Score: ${PLAYER.score}`;
+      $gameWindow.append(tempCurrUserScoreOutput);
+      allScores.push(currentScore);
+      let tempLength=10;
+      if(allScores.length<10){
+          tempLength=allScores.length;
+      }
+      allScores.sort((a, b) => {
+          return Math.floor(b.gameMode / b.time * 1000) - Math.floor(a.gameMode / a.time * 1000);
+      });
+      for (let i = 0; i < tempLength; i++) {
+          let tempContent = document.createElement('H3');
+          tempContent.innerText = `${i + 1}. ${allScores[i].name} ${allScores[i].score} `;
+          $gameWindow.append(tempContent);
+      }
+      $gameWindow.append('<button class="btn btn-primary" onclick="location.reload();">Rerun?</button>');
+      localStorage.scoreAll = JSON.stringify(allScores);
     this.healPoints = MAX_HEAL_POINTS;
   }
   clearImage() {
