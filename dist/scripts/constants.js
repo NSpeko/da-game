@@ -59,7 +59,9 @@ let VERTICAL_WRAP = CANVAS_HEIGHT / 10;
 
 const HEAL = 30;
 const ATTACK = 60;
-const ENEMY_PATH = `./resources/images/enemy`;
+const ENEMY_PATH = `../resources/images/enemy`;
+const SPELL_IMAGE_PATH = `../resources/images/spell/`;
+const SPELL_SOUND_PATH = `../resources/audio/spell/`;
 const MAX_HEAL_POINTS = 300 * PX;
 
 const PLAYER_NUM = 1;

@@ -4,8 +4,8 @@ class Spell {
   constructor(name, imageSrc, soundSrc, width, height, stepX, stepY) {
     this.name = name;
     this.image = new Image();
-    this.image.src = imageSrc;
-    this.sound = new Audio(soundSrc);
+    this.image.src = `${SPELL_IMAGE_PATH}${imageSrc}`;
+    this.sound = new Audio(`${SPELL_SOUND_PATH}${soundSrc}`);
     this.width = width * PX;
     this.height = height * PX;
     this.step = {
@@ -51,8 +51,8 @@ class Heal extends Spell {
   }
 }
 
-const fireball = new flyingSpell('Fireball', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.mp3', 100, 100, 10, 20);
-const meteor = new dropSpell('Meteor', './resources/images/spell/fireball.gif', './resources/audio/spell/bzing.ogg', 200, 200, 12);
-const arrow = new straightSpell('Arrow', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.wav', 100, 100, 12);
-const star = new jigglingSpell('Star', './resources/images/spell/fireball.gif', './resources/audio/spell/meteor.wav', 100, 100, 12, 8);
-const heal = new Heal('Heal', './resources/images/spell/heal.png', './resources/audio/spell/meteor.mp3', 200, 200);
+const fireball = new flyingSpell('Fireball', `fireball.gif`, `meteor.mp3`, 100, 100, 10, 20);
+const meteor = new dropSpell('Meteor', `fireball.gif`, `bzing.ogg`, 200, 200, 12);
+const arrow = new straightSpell('Arrow', `fireball.gif`, `meteor.wav`, 100, 100, 12);
+const star = new jigglingSpell('Star', `fireball.gif`, `meteor.wav`, 100, 100, 12, 8);
+const heal = new Heal('Heal', `heal.png`, `meteor.mp3`, 200, 200);

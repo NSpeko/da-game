@@ -91,7 +91,7 @@ class Actor {
 function createPlayer(gender, name) {
   const playerImg = new Image();
   const playerNumber = Math.ceil(Math.random() * PLAYER_NUM);
-  playerImg.src = `./resources/images/player/hero_${gender}_${playerNumber}.png`;
+  playerImg.src = `../resources/images/player/hero_${gender}_${playerNumber}.png`;
   playerImg.width = PLAYER_WIDTH * PX;
   playerImg.height = PLAYER_HEIGHT * PX;
   PLAYER = new Player(
