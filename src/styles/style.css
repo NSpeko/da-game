@@ -1,15 +1,18 @@
 @keyframes loader-rotate {
   0% {
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
   100% {
-    transform: rotate(360deg); } }
+    transform: rotate(360deg);
+  }
+}
 
 .loader03 {
   width: 16rem;
   height: 16rem;
   border: 1.5rem solid transparent;
-  border-top-color: #0052ec;
-  border-bottom-color: #0052ec;
+  border-top-color: sandybrown;
+  border-bottom-color: sandybrown;
   border-radius: 50%;
   position: relative;
   animation: loader-rotate 1s linear infinite;
@@ -89,7 +92,7 @@ body {
   overflow-y: auto
 }
 
-.not-displayed{
+.not-displayed {
   display: none;
 }
 

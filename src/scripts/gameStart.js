@@ -1,3 +1,13 @@
+window.onload = function () {
+  document.getElementsByClassName('game-menu')[0].style.top = '-' + CANVAS_HEIGHT + 'px';
+  if (!localStorage.user) {
+    document.getElementById('logInModalOpener').click();
+  } else {
+    $('body').toggleClass('bg-secondary');
+    pageLoaderSpinnerFunction();
+  }
+}
+
 window.onresize = rebuildCanvas();
 setInterval(function () {
   rebuildCanvas();
