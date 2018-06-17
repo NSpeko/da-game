@@ -44,6 +44,19 @@ body {
   display: inline-flex;
 }
 
+.staff-container {
+  display: inline-flex;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+
+.staff-container .card{
+  margin: 0 .3rem;
+}
+
 .game-menu-dropdown-options {
   max-height: 9rem;
   overflow-x: hidden;

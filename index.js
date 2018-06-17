@@ -7,14 +7,14 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/src'));
 
 app.get('/game', function (req, res) {
-  res.sendFile(path.join(__dirname + '/dist/views/index.html'));
+  res.sendFile(path.join(__dirname + '/src/views/index.html'));
 });
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname + '/dist/views/about.html'));
+  res.sendFile(path.join(__dirname + '/src/views/about.html'));
 });
 
 app.listen(3000, function () {
