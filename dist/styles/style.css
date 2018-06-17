@@ -4,7 +4,7 @@ body {
 
 .main-game-container {
   margin-top: 4rem;
-  background: url("./resources/images/Background.png") no-repeat center center;
+  background: url("../resources/images/Background.png") no-repeat center center;
   background-size: cover;
   width: 80vw;
 }
