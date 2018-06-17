@@ -41,6 +41,8 @@
     </div>
   </header>
 
+  <div id="pageLoaderSpinnerElement" class="loader03 "></div>
+
   <div class="modal fade text-dark" id="logInModal">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -97,7 +99,7 @@
   </div>
 
   <div id="gameWindow" class="container main-game-container">
-    <div id="onlyLoggedUserContent" style="display: none;">
+    <div id="onlyLoggedUserContent" class="not-displayed">
       <div class="game-block">
         <div class="game-canvas-container">
           <canvas id="spellCanvas" class="canvas-sheet skills-sheet-canvas"></canvas>
@@ -135,6 +137,11 @@
     <script src="../scripts/tasks/translation/translation.js"></script>
     <script src="../scripts/tasks/speech/speech.js"></script>
     <script src="../scripts/monster/monster-creation.js"></script>
+<<<<<<< HEAD
+=======
+    <script src="../scripts/spinner.js"></script>
+    <script src="../scripts/autorisation.js"></script>
+>>>>>>> spinner-dev
     <script src="../scripts/gameStart.js"></script>
     <script src="../scripts/addSpells.js"></script>
     <script src="../scripts/actors.js"></script>

@@ -3,13 +3,17 @@ import {
   PLAYER,
   ENEMY
 } from './actors'
+import {
+  pageLoaderSpinnerFunction
+} from './spinner'
 
 window.onload = function () {
   document.getElementsByClassName('game-menu')[0].style.top = '-' + Constants.CANVAS_HEIGHT + 'px';
   if (!localStorage.user) {
     document.getElementById('logInModalOpener').click();
   } else {
-    document.getElementById('onlyLoggedUserContent').style.display = 'block';
+    $('body').toggleClass('bg-secondary');
+    pageLoaderSpinnerFunction();
   }
 }
 

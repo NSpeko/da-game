@@ -1,5 +1,3 @@
-console.log('1')
-
 const spellCanvas = document.getElementById('spellCanvas')
 const spellContext = spellCanvas.getContext('2d');
 const actorsCanvas = document.getElementById('actors')
