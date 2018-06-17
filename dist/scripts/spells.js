@@ -51,8 +51,8 @@ class Heal extends Spell {
   }
 }
 
-const fireball = new flyingSpell('Fireball', `fireball.gif`, `meteor.mp3`, 100, 100, 10, 20);
-const meteor = new dropSpell('Meteor', `fireball.gif`, `bzing.ogg`, 200, 200, 12);
-const arrow = new straightSpell('Arrow', `fireball.gif`, `meteor.wav`, 100, 100, 12);
-const star = new jigglingSpell('Star', `fireball.gif`, `meteor.wav`, 100, 100, 12, 8);
-const heal = new Heal('Heal', `heal.png`, `meteor.mp3`, 200, 200);
+const fireball = new flyingSpell('Fireball', `fireball.png`, `fireball.ogg`, 100, 100, 10, 20);
+const meteor = new dropSpell('Meteor', `meteor.png`, `meteor.ogg`, 200, 200, 12);
+const arrow = new straightSpell('Arrow', `arrow.png`, `arrow.ogg`, 100, 100, 12);
+const star = new jigglingSpell('Star', `star.png`, `star.ogg`, 100, 100, 12, 8);
+const heal = new Heal('Heal', `heal.png`, `heal.ogg`, 200, 200);
