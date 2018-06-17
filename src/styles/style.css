@@ -84,6 +84,7 @@ body {
 }
 @media only screen and (min-width: 600px) {
   .inline-flex-container {
+    width: auto;
     display: inline-flex;
   }
 }
