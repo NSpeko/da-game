@@ -168,8 +168,8 @@ class Enemy extends Actor {
   drawImage() {
     actorsContext.drawImage(
       this.image.legs,
-      this.place.x - (BODY_WIDTH * PX) / 12,
-      this.place.y + BODY_HEIGHT * PX + (HEAD_HEIGHT * PX) / 3,
+      this.place.x - (BODY_WIDTH * PX) / 6,
+      this.place.y + (BODY_HEIGHT * PX)/1.5 + (HEAD_HEIGHT * PX) / 3,
       this.image.legs.width,
       this.image.legs.heigth
     );
