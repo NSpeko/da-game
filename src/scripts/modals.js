@@ -53,13 +53,20 @@ async function addTask(spell, start, target) {
   document.getElementById('submitTask').addEventListener('click', function () {
     isSolved(answer, spell, start, target);
   });
-
+  document.getElementById('userAnswer').addEventListener("keyup", function (evt) {
+    evt.preventDefault();
+    if (evt.keyCode === 13) {
+      document.getElementById('submitTask').click();
+    }
+  });
 }
 
 function speakToMe(word) {
   const synth = window.speechSynthesis;
   synth.getVoices();
   const wordSpeech = new SpeechSynthesisUtterance(word);
+  wordSpeech.lang = 'en-US';
+  wordSpeech.pitch = 0.7;
   synth.speak(wordSpeech);
 }
 
@@ -67,7 +74,7 @@ function isSolved(answer, spell, start, target) {
   const userAnswer = document.getElementById('userAnswer').value;
   const tasksQuiz = document.getElementById('taskQuiz');
   tasksQuiz.style.color = 'red';
-  if (answer == userAnswer) {
+  if (answer.toString().toLowerCase() == userAnswer.toLowerCase().trim()) {
     tasksQuiz.innerText = `RIGHT!`;
     setInterval(createSpell(spell, start, target), Constants.MODAL_DELATION);
   } else {
@@ -110,6 +117,9 @@ function createSolveElement(type) {
   tempElemet.setAttribute('id', 'userAnswer');
   tempElemet.setAttribute('type', `${type}`);
   document.getElementById('userModalTaskContainer').appendChild(tempElemet);
+  document.onkeypress = function () {
+    document.getElementById("userAnswer").focus();
+  };
 }
 
 export {

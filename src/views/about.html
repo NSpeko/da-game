@@ -8,127 +8,122 @@
   <link rel="shortcut icon" href="../resources/images/icon.png" type="image/x-icon">
   <link rel="stylesheet" href="../styles/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+    crossorigin="anonymous">
 </head>
 
 <body>
-<header class="bg-dark fixed-top">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-          crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-          crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-          crossorigin="anonymous"></script>
-  <div class="container">
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-      <a class="navbar-brand" href="/game">Game</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/about" target="_parent">About</a>
-          </li>
+  <header class="bg-dark fixed-top">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    <div class="container">
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="/game">Game</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/about" target="_parent">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div class="container main-container ">
+    <div class="jumbotron main-game-container text-light">
+      <h1>The Legend Of Goofy Canvas</h1>
+      <p>The greatest journey of wise midget...</p>
+    </div>
+    <h3 class="text-center">Description</h3>
+    <section class="my-3">
+      <p>Our Game is an Open Source game system, supported by dedicated fans worldwide who have contributed hundreds of pages
+        of rules supplements, adventure modules, and other useful and enjoyable game materials as seen on our downloads page.
+        We'd love for you to join us on our forum where we discuss the game as well as creating new materials for it.</p>
+    </section>
+    <h3 class="text-center">Play it</h3>
+    <section class="my-3">
+      <p>The following game is available by
+        <a href="/game" target="_blank">link</a>. </p>
+    </section>
+    <h3 class="text-center">Photo shots</h3>
+    <section class="my-3">
+      <div id="gameSlides" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#gameSlides" data-slide-to="0" class="active"></li>
+          <li data-target="#gameSlides" data-slide-to="1"></li>
+          <li data-target="#gameSlides" data-slide-to="2"></li>
         </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../resources/images/slides/slide_1.png" alt="slide">
+          </div>
+          <div class="carousel-item">
+            <img src="../resources/images/slides/slide_2.png" alt="slide">
+          </div>
+          <div class="carousel-item">
+            <img src="../resources/images/slides/slide_3.png" alt="slide">
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#gameSlides" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#gameSlides" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
       </div>
-    </nav>
+    </section>
+    <h3 class="text-center">Staff</h3>
+    <section class="staff-container my-3">
+      <div class="inline-flex-container mx-auto">
+        <div class="card" style="width:16rem">
+          <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png" alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">Sergey Kurachev</h4>
+            <p class="card-text">System engineer, student, philanthropist...</p>
+            <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=nonstoper42@gmail.com&tf=1" class="btn btn-primary">Contact</a>
+          </div>
+        </div>
+        <div class="card" style="width:16rem">
+          <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">Pavel Chichin</h4>
+            <p class="card-text">System engineer, student, philanthropist...</p>
+            <a href="https://github.com/elostryy/" class="btn btn-primary">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <h3 class="text-center">Work separation</h3>
+    <section class="container inline-flex-container mx-auto my-3">
+      <article class="mx-2 end-section">
+        <h4>Sergeys work</h4>
+        <h5>Design</h5>
+        <p>Added bootstrap 4. Made whole thing kind of responsive.
+        </p>
+        <h5>Code</h5>
+        <p>Log in script. Tasks menu/window logic. Spells logic.
+        </p>
+      </article>
+      <article class="mx-2 end-section">
+        <h4>Pavels work</h4>
+        <h5>Code</h5>
+        <p>Tries to build good modules. Keeps you and your enemies alive. Got mad with this game logic. Has fun with coding.
+          Does not realy hates you.</p>
+      </article>
+    </section>
   </div>
-</header>
-<div class="container main-container ">
-  <div class="jumbotron main-game-container text-light">
-    <h1>The Legend Of Goofy Canvas</h1>
-    <p>The greatest journey of wise midget...</p>
-  </div>
-  <h3 class="text-center">Description</h3>
-  <section class="my-3">
-    <p>Our Game is an Open Source game system, supported by dedicated fans worldwide who have contributed hundreds of pages
-      of rules supplements, adventure modules, and other useful and enjoyable game materials as seen on our downloads page.
-      We'd love for you to join us on our forum where we discuss the game as well as creating new materials for it.</p>
-  </section>
-  <h3 class="text-center">Play it</h3>
-  <section class="my-3">
-    <p>The following game is available by
-      <a href="/game" target="_blank">link</a>. </p>
-  </section>
-  <h3 class="text-center">Photo shots</h3>
-  <section class="my-3">
-    <div id="gameSlides" class="carousel slide" data-ride="carousel">
-
-      <!-- Indicators -->
-      <ul class="carousel-indicators">
-        <li data-target="#gameSlides" data-slide-to="0" class="active"></li>
-        <li data-target="#gameSlides" data-slide-to="1"></li>
-        <li data-target="#gameSlides" data-slide-to="2"></li>
-      </ul>
-
-      <!-- The slideshow -->
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="../resources/images/slides/slide_1.png" alt="slide">
-        </div>
-        <div class="carousel-item">
-          <img src="../resources/images/slides/slide_2.png" alt="slide">
-        </div>
-        <div class="carousel-item">
-          <img src="../resources/images/slides/slide_3.png" alt="slide">
-        </div>
-      </div>
-
-      <!-- Left and right controls -->
-      <a class="carousel-control-prev" href="#gameSlides" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#gameSlides" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
-    </div>
-  </section>
-  <h3 class="text-center">Staff</h3>
-  <section class="staff-container my-3">
-    <div class="inline-flex-container mx-auto">
-      <div class="card" style="width:16rem">
-        <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png" alt="Card image" style="width:100%">
-        <div class="card-body">
-          <h4 class="card-title">Sergey Kurachev</h4>
-          <p class="card-text">System engineer, student, philanthropist...</p>
-          <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=nonstoper42@gmail.com&tf=1" class="btn btn-primary">Contact</a>
-        </div>
-      </div>
-      <div class="card" style="width:16rem">
-        <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="Card image" style="width:100%">
-        <div class="card-body">
-          <h4 class="card-title">Pavel Chichin</h4>
-          <p class="card-text">System engineer, student, philanthropist...</p>
-          <a href="https://github.com/elostryy/" class="btn btn-primary">Contact</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <h3 class="text-center">Work separation</h3>
-  <section class="container inline-flex-container mx-auto my-3">
-    <article class="mx-2 end-section">
-      <h4>Sergeys work</h4>
-          <h5>Design</h5>
-            <p>Added bootstrap 4.
-            Made whole thing kind of responsive.
-            </p>
-          <h5>Code</h5>
-            <p>Log in script.
-            Tasks menu/window logic.
-            Spells logic.
-            </p>
-    </article>
-    <article class="mx-2 end-section">
-      <h4>Pavels work</h4>
-          <h5>Code</h5>
-      <p>Tries to build good modules.
-            Keeps you and your enemies alive.
-            Got mad with this game logic.
-            Has fun with coding.
-            Does not realy hates you.</p>
-    </article>
-  </section>
-</div>
 </body>
+
 </html>

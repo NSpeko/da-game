@@ -28,33 +28,55 @@ class Actor {
     this.drawHP();
   }
   drawName(nameWrap) {
+    let NAME_WRAP = 0;
+    if (this.type == 'enemy') {
+      NAME_WRAP = Constants.NAME_WRAP_ENEMY * Constants.PX;
+    } else if (this.type == 'player') {
+      NAME_WRAP = Constants.NAME_WRAP_PLAYER * Constants.PX;
+    }
     Constants.actorsContext.font = `${Constants.NAME_SIZE * Constants.PX}px Verdana`;
+    Constants.actorsContext.fillStyle = 'red';
+    Constants.actorsContext.textAlign = 'center';
+    Constants.actorsContext.fillText(this.name, this.place.x - nameWrap * Constants.PX, this.place.y - NAME_WRAP);
     Constants.actorsContext.fillStyle = 'black';
     Constants.actorsContext.textAlign = 'center';
-    Constants.actorsContext.fillText(this.name, this.place.x - nameWrap * Constants.PX, this.place.y - Constants.NAME_WRAP * Constants.PX);
+    Constants.actorsContext.strokeText(this.name, this.place.x - nameWrap * Constants.PX, this.place.y - NAME_WRAP);
   }
   drawHP(hpWrap) {
     let hpPercent = this.healPoints / Constants.MAX_HEAL_POINTS;
+    let HP_WRAP = 0;
+    if (this.type == 'enemy') {
+      HP_WRAP = Constants.HP_WRAP_ENEMY * Constants.PX;
+    } else if (this.type == 'player') {
+      HP_WRAP = Constants.HP_WRAP_PLAYER * Constants.PX;
+    }
     Constants.actorsContext.fillStyle = 'red';
     Constants.actorsContext.fillRect(
-      this.place.x - hpWrap,
-      this.place.y - Constants.HP_WRAP * Constants.PX,
+      this.place.x - hpWrap * Constants.PX,
+      this.place.y - HP_WRAP,
       hpPercent * this.image.width,
       Constants.HP_LINE_HEIGHT * Constants.PX
     );
     Constants.actorsContext.fillStyle = 'black';
     Constants.actorsContext.strokeRect(
-      this.place.x - hpWrap,
-      this.place.y - Constants.HP_WRAP * Constants.PX,
+      this.place.x - hpWrap * Constants.PX,
+      this.place.y - HP_WRAP,
       this.image.width,
       Constants.HP_LINE_HEIGHT * Constants.PX
     );
   }
   rebuild(rebuildedX, rebuildedY) {
     this.place = {
-      x: rebuildedX * Constants.PX,
-      y: rebuildedY * Constants.PX
+      x: rebuildedX,
+      y: rebuildedY
     };
+    if (this.type === 'enemy') {
+      this.image.width = Constants.ENEMY_WIDTH * Constants.PX;
+      this.image.height = Constants.ENEMY_HEIGHT * Constants.PX;
+    } else if (this.type === 'player') {
+      this.image.width = Constants.PLAYER_WIDTH * Constants.PX;
+      this.image.height = Constants.PLAYER_HEIGHT * Constants.PX;
+    }
     this.redraw();
   }
   heal(spell) {
@@ -99,13 +121,14 @@ class Actor {
 
 function createPlayer(gender, name) {
   const playerImg = new Image();
-  const playerNumber = Math.ceil(Math.random() * Constants.PLAYER_NUM);
-  playerImg.src = `../resources/images/player/hero_${gender}_${playerNumber}.png`;
+  const genderNum = `PLAYER_${gender.toUpperCase()}_NUM`
+  const playerNumber = Math.ceil(Math.random() * Constants[genderNum]);
+  playerImg.src = `${Constants.PLAYER_PATH}/hero_${gender}_${playerNumber}.png`;
   playerImg.width = Constants.PLAYER_WIDTH * Constants.PX;
   playerImg.height = Constants.PLAYER_HEIGHT * Constants.PX;
   PLAYER = new Player(
-    Constants.WRAP / 3,
-    Constants.CANVAS_HEIGHT - Constants.PLAYER_HEIGHT - Constants.VERTICAL_WRAP,
+    Constants.WRAP * Constants.PX,
+    Constants.CANVAS_HEIGHT - Constants.PLAYER_HEIGHT - Constants.VERTICAL_WRAP * Constants.PX,
     'player',
     playerImg,
     name
@@ -131,7 +154,7 @@ class Player extends Actor {
   }
   drawInfo() {
     this.drawName(-this.image.width / 3);
-    this.drawHP(this.place.x);
+    this.drawHP(this.place.x / 3);
     this.drawLevel();
   }
   drawLevel() {
@@ -210,7 +233,7 @@ class Enemy extends Actor {
     this.redraw();
   }
   drawInfo() {
-    this.drawName(this.name.length);
+    this.drawName(0);
     this.drawHP(this.image.width / 3);
   }
   drawImage() {
@@ -218,29 +241,29 @@ class Enemy extends Actor {
       this.image.legs,
       this.place.x - (Constants.BODY_WIDTH * Constants.PX) / 6,
       this.place.y + (Constants.BODY_HEIGHT * Constants.PX) / 1.5 + (Constants.HEAD_HEIGHT * Constants.PX) / 3,
-      this.image.legs.width,
-      this.image.legs.heigth
+      Constants.LEGS_WIDTH * Constants.PX,
+      Constants.LEGS_HEIGHT * Constants.PX
     );
     Constants.actorsContext.drawImage(
       this.image.body,
-      this.place.x - (Constants.BODY_WIDTH * Constants.PX) / 4.2,
-      this.place.y + (Constants.HEAD_HEIGHT * Constants.PX) / 2,
-      this.image.body.width,
-      this.image.body.heigth
+      this.place.x - (Constants.BODY_WIDTH * Constants.PX) / 3.5,
+      this.place.y + (Constants.HEAD_HEIGHT * Constants.PX) / 4,
+      Constants.BODY_WIDTH * Constants.PX,
+      Constants.BODY_HEIGHT * Constants.PX
     );
     Constants.actorsContext.drawImage(
       this.image.head,
       this.place.x - (Constants.BODY_WIDTH * Constants.PX) / 50,
-      this.place.y,
-      this.image.head.width,
-      this.image.head.heigth
+      this.place.y - (Constants.HEAD_HEIGHT * Constants.PX) / 3,
+      Constants.HEAD_WIDTH * Constants.PX,
+      Constants.HEAD_HEIGHT * Constants.PX
     );
     Constants.actorsContext.drawImage(
       this.image.weapon,
-      this.place.x - 0.9 * Constants.WEAPON_WIDTH * Constants.PX,
-      this.place.y + Constants.HEAD_HEIGHT * Constants.PX - (Constants.WEAPON_HEIGHT / 2) * Constants.PX,
-      this.image.weapon.width,
-      this.image.weapon.heigth
+      this.place.x - 1.1 * Constants.WEAPON_WIDTH * Constants.PX,
+      this.place.y + Constants.HEAD_HEIGHT * Constants.PX - (Constants.WEAPON_HEIGHT / 1.5) * Constants.PX,
+      Constants.WEAPON_WIDTH * Constants.PX,
+      Constants.WEAPON_HEIGHT * Constants.PX
     );
   }
   loose() {
@@ -263,8 +286,8 @@ function createEnemy() {
   enemyImg.height = Constants.ENEMY_HEIGHT * Constants.PX;
   enemyDraw().then(([name, build]) => {
     ENEMY = new Enemy(
-      Constants.CANVAS_WIDTH - Constants.ENEMY_WIDTH - 4 * Constants.WRAP,
-      Constants.CANVAS_HEIGHT - Constants.ENEMY_HEIGHT - 0.8 * Constants.VERTICAL_WRAP,
+      Constants.CANVAS_WIDTH - Constants.ENEMY_WIDTH - Constants.WRAP * Constants.PX,
+      Constants.CANVAS_HEIGHT - Constants.ENEMY_HEIGHT - Constants.VERTICAL_WRAP * Constants.PX,
       'enemy',
       enemyImg,
       name,

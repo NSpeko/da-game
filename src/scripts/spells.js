@@ -8,11 +8,11 @@ class Spell {
     this.image = new Image();
     this.image.src = `${Constants.SPELL_IMAGE_PATH}${imageSrc}`;
     this.sound = new Audio(`${Constants.SPELL_SOUND_PATH}${soundSrc}`);
-    this.width = width * Constants.PX;
-    this.height = height * Constants.PX;
+    this.width = width;
+    this.height = height;
     this.step = {
-      x: stepX * Constants.PX,
-      y: stepY * Constants.PX
+      x: stepX,
+      y: stepY
     }
     SPELLLIST.push(this);
   }

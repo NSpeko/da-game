@@ -9,7 +9,6 @@ function logUserIn(name, gender) {
   const user = new User(name, gender);
   if (user.name && user.gender) {
     localStorage.user = JSON.stringify(user);
-    $('body').toggleClass('bg-secondary');
     pageLoaderSpinnerFunction();
   }
   drawHeroes();
