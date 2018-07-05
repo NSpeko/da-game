@@ -10,6 +10,7 @@ import {
 window.onload = function () {
   document.getElementsByClassName('game-menu')[0].style.top = '-' + Constants.CANVAS_HEIGHT + 'px';
   if (!localStorage.user) {
+    document.getElementsByClassName('game-menu')[0].style.display = 'none'
     document.getElementById('logInModalOpener').click();
   } else {
     $('body').toggleClass('bg-secondary');
@@ -20,13 +21,14 @@ window.onload = function () {
 window.onresize = Constants.rebuildCanvas();
 setInterval(function () {
   Constants.rebuildCanvas();
+  document.getElementsByClassName('game-menu')[0].style.top = '-' + Constants.CANVAS_HEIGHT + 'px';
   if (ENEMY) ENEMY.rebuild(
-    Constants.CANVAS_WIDTH * Constants.PX - 3.2 * Constants.ENEMY_WIDTH * Constants.PX - Constants.WRAP * Constants.PX,
-    Constants.CANVAS_HEIGHT * Constants.PX - Constants.ENEMY_HEIGHT * Constants.PX - 3.8 * Constants.VERTICAL_WRAP * Constants.PX
+    Constants.CANVAS_WIDTH - ENEMY.image.width - Constants.WRAP * Constants.PX,
+    Constants.CANVAS_HEIGHT - ENEMY.image.height - Constants.VERTICAL_WRAP * Constants.PX
   );
   if (PLAYER) PLAYER.rebuild(
-    Constants.WRAP * Constants.PX / 3,
-    Constants.CANVAS_HEIGHT * Constants.PX - Constants.PLAYER_HEIGHT * Constants.PX - 4.5 * Constants.VERTICAL_WRAP * Constants.PX);
+    Constants.WRAP,
+    Constants.CANVAS_HEIGHT - PLAYER.image.height - Constants.VERTICAL_WRAP * Constants.PX);
 }, 500);
 
 document.getElementById('menu').addEventListener('click', function () {

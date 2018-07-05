@@ -74,7 +74,26 @@ body {
 }
 
 .staff-container {
-  display: inline-flex;
+  display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .end-section {
+    width: auto;
+  }
+  .inline-flex-container {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .end-section {
+    width: 50%;
+  }
+  .inline-flex-container {
+    max-width: 100%;
+    display: inline-flex;
+  }
 }
 
 .carousel-inner img {
@@ -98,4 +117,8 @@ body {
 
 .hidden {
   visibility: hidden;
+}
+
+.text-light {
+  text-shadow: 1px 1px 1px black;
 }
