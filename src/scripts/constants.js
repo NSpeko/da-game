@@ -1,10 +1,10 @@
-const spellCanvas = document.getElementById('spellCanvas')
-const spellContext = spellCanvas.getContext('2d');
+const $canvasContainer=$('#gameWindow');
+const $spellCanvas = $('#spellCanvas')[0];
+const spellContext = $spellCanvas.getContext('2d');
 const actorsCanvas = document.getElementById('actors')
 const actorsContext = actorsCanvas.getContext('2d');
 let CANVAS_WIDTH = document.getElementById('gameWindow').offsetWidth;
 let CANVAS_HEIGHT = 350;
-actorsCanvas.style.marginLeft = `-${CANVAS_WIDTH}px`;
 const getScale = () => CANVAS_WIDTH / 800
 let PX = getScale();
 
@@ -12,9 +12,9 @@ function rebuildCanvas() {
   CANVAS_WIDTH = document.getElementById('gameWindow').offsetWidth;
   PX = getScale();
   CANVAS_HEIGHT = 350 * PX;
-  actorsCanvas.style.marginLeft = `-${CANVAS_WIDTH}px`;
-  spellCanvas.width = CANVAS_WIDTH;
-  spellCanvas.height = CANVAS_HEIGHT;
+  $canvasContainer.height(CANVAS_HEIGHT);
+  $spellCanvas.width = CANVAS_WIDTH;
+  $spellCanvas.height = CANVAS_HEIGHT;
   actorsCanvas.width = CANVAS_WIDTH;
   actorsCanvas.height = CANVAS_HEIGHT;
 }
@@ -85,7 +85,7 @@ export {
   TOP_COUNT,
   WRAP,
   VERTICAL_WRAP,
-  spellCanvas,
+  $spellCanvas,
   spellContext,
   actorsCanvas,
   actorsContext,

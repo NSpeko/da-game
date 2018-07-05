@@ -8,7 +8,6 @@ import {
 } from './spinner'
 
 window.onload = function () {
-  document.getElementsByClassName('game-menu')[0].style.top = '-' + Constants.CANVAS_HEIGHT + 'px';
   if (!localStorage.user) {
     document.getElementsByClassName('game-menu')[0].style.display = 'none'
     document.getElementById('logInModalOpener').click();
@@ -21,7 +20,6 @@ window.onload = function () {
 window.onresize = Constants.rebuildCanvas();
 setInterval(function () {
   Constants.rebuildCanvas();
-  document.getElementsByClassName('game-menu')[0].style.top = '-' + Constants.CANVAS_HEIGHT + 'px';
   if (ENEMY) ENEMY.rebuild(
     Constants.CANVAS_WIDTH - ENEMY.image.width - Constants.WRAP * Constants.PX,
     Constants.CANVAS_HEIGHT - ENEMY.image.height - Constants.VERTICAL_WRAP * Constants.PX
