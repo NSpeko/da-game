@@ -1,0 +1,37 @@
+[{
+    "country": "Australia",
+    "image": "Australia.png"
+  },
+  {
+    "country": "Canada",
+    "image": "Canada.png"
+  },
+  {
+    "country": "France",
+    "image": "France.png"
+  },
+  {
+    "country": "Germany",
+    "image": "Germany.png"
+  },
+  {
+    "country": "Israel",
+    "image": "Israel.png"
+  },
+  {
+    "country": "Italy",
+    "image": "Italy.png"
+  },
+  {
+    "country": "Japan",
+    "image": "Japan.png"
+  },
+  {
+    "country": "UK",
+    "image": "UK.png"
+  },
+  {
+    "country": "USA",
+    "image": "USA.png"
+  }
+]

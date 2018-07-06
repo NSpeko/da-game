@@ -1,7 +1,5 @@
-// TODO: now: впишите столицы, впишите звуки животных...
-//       ez: верная столица, верное выражение перевода...
+// TODO: not ez: кнопки да/нет
 //       new: впишите, что на картинке; выберите из приведенного; sortable;
-//       dif: всякая графическая хуйня
 
 const express = require('express');
 
@@ -23,6 +21,11 @@ app.use(express.static(`${__dirname}/src`));
 
 app.get('/game', (req, res) => {
   res.sendFile(path.join(`${__dirname}/src/views/index.html`));
+});
+
+app.get('/test', (req, res) => {
+  // delete after tortures
+  res.sendFile(path.join(`${__dirname}/src/scripts/test/test.html`));
 });
 
 app.get('*', (req, res) => {

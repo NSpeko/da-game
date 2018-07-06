@@ -3,6 +3,10 @@ import countingTask from './tasks/counting/counting';
 import getSpeechWord from './tasks/speech/speech';
 import getTranslation from './tasks/translation/translation';
 import { createSpell, enemyAttack } from './spellCast';
+import getCapital from './tasks/countryCapitals/countryCapitals';
+import getAnimal from './tasks/animalSounds/animalSounds';
+import getFlag from './tasks/flag/flag';
+import getAnimalImage from './tasks/animal/animal';
 
 export default function taskWindowLoader(spell, start, target) {
   $('#userModalTaskContainer').empty();
@@ -27,6 +31,32 @@ async function addTask(spell, start, target) {
       type = 'text';
       [task, answer] = await getTranslation();
       break;
+    case 'capitals':
+      toDo = 'Write capital';
+      type = 'text';
+      [task, answer] = await getCapital();
+      break;
+    case 'animalSounds':
+      toDo = 'Write animal';
+      type = 'text';
+      [task, answer] = await getAnimal();
+      break;
+    case 'flag':
+      toDo = "Who's is this flag?";
+      type = 'text';
+      task = '';
+      const [flagImage, flagCountry] = await getFlag();
+      answer = flagCountry;
+      drawImage(flagImage);
+      break;
+    case 'animals':
+      toDo = 'Who is it?';
+      type = 'text';
+      task = '';
+      const [animalImage, animalName] = await getAnimalImage();
+      answer = animalName;
+      drawImage(animalImage);
+      break;
     case 'speech':
       toDo = 'Write what you hear';
       type = 'text';
@@ -50,6 +80,14 @@ async function addTask(spell, start, target) {
       document.getElementById('submitTask').click();
     }
   });
+}
+
+function drawImage(imageSrc) {
+  const imageElement = document.createElement('img');
+  imageElement.setAttribute('src', imageSrc);
+  imageElement.setAttribute('width', '50%');
+  imageElement.style.border = 'black 1px solid';
+  document.getElementById('userModalTaskContainer').appendChild(imageElement);
 }
 
 function speakToMe(word) {

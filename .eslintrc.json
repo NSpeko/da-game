@@ -4,13 +4,15 @@
         "no-undef": "warn",
         "no-param-reassign": "warn",
         "class-methods-use-this": "warn",
-        "no-use-before-define": "warn",
         "default-case": "off",
-        "arrow-parens": "warn",
+        "arrow-parens": "off",
         "function-paren-newline": "warn",
-        "comma-dangle": "warn",
+        "comma-dangle": "off",
         "no-mixed-operators": "off",
-        "no-unused-vars": "warn"
+        "no-unused-vars": "warn",
+        "no-eval": "warn",
+        "no-case-declarations": "off",
+        "no-use-before-define": "off"
     },
     "env": {
         "browser": true,

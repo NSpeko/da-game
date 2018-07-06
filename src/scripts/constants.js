@@ -57,9 +57,15 @@ const HEAL = 30;
 const ATTACK = 60;
 
 const TOP_COUNT = 10;
-const TASKSLIST = ['counting', 'translation', 'speech'];
-const MAX_COUNTING_NUM = 20;
-const SIGN_ARRAY = ['-', '+', '*'];
+const TASKSLIST = [
+  'counting',
+  'translation',
+  'speech',
+  'capitals',
+  'animalSounds',
+  'flag',
+  'animals'
+];
 const KEYBOARDEVENT = {
   ENTER: 13
 };
@@ -72,12 +78,8 @@ export {
   PLAYER_FEMALE_NUM,
   PLAYER_MALE_NUM,
   TASKSLIST,
-  MAX_COUNTING_NUM,
-  SIGN_ARRAY,
   MODAL_DELATION,
   SPEECH_DELATION,
-  PLAYER,
-  ENEMY,
   HEAL,
   ATTACK,
   ENEMY_PATH,

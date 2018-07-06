@@ -1,10 +1,9 @@
-import * as Constants from '../../constants';
-
 export default function countingTask() {
-  const signArray = Constants.SIGN_ARRAY;
-  const sign = signArray[Math.floor(Math.random() * signArray.length)];
-  const firstNum = getRandomCountNum(Constants.MAX_COUNTING_NUM);
-  const secondNum = getRandomCountNum(Constants.MAX_COUNTING_NUM);
+  const SIGN_ARRAY = ['-', '+', '*'];
+  const MAX_COUNTING_NUM = 20;
+  const sign = SIGN_ARRAY[Math.floor(Math.random() * SIGN_ARRAY.length)];
+  const firstNum = getRandomCountNum(MAX_COUNTING_NUM);
+  const secondNum = getRandomCountNum(MAX_COUNTING_NUM);
   const task = `${firstNum} ${sign} ${secondNum}`;
   const answer = eval(task);
   return [task, answer];

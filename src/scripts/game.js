@@ -12,3 +12,7 @@ import './gameStart';
 import './modals';
 import './spellCast';
 import './spinner';
+import './tasks/countryCapitals/countryCapitals';
+import './tasks/animalSounds/animalSounds';
+import './tasks/flag/flag';
+import './tasks/animal/animal';

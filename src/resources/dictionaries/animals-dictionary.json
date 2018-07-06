@@ -1,0 +1,41 @@
+[{
+    "name": "Dog",
+    "image": "Dog.png"
+  },
+  {
+    "name": "Cat",
+    "image": "Cat.png"
+  },
+  {
+    "name": "Cow",
+    "image": "Cow.png"
+  },
+  {
+    "name": "Sheep",
+    "image": "Sheep.png"
+  },
+  {
+    "name": "Horse",
+    "image": "Horse.png"
+  },
+  {
+    "name": "Pig",
+    "image": "Pig.png"
+  },
+  {
+    "name": "Unicorn",
+    "image": "Unicorn.png"
+  },
+  {
+    "name": "Donkey",
+    "image": "Donkey.png"
+  },
+  {
+    "name": "Owl",
+    "image": "Owl.png"
+  },
+  {
+    "name": "Monkey",
+    "image": "Monkey.png"
+  }
+]
