@@ -1,17 +1,8 @@
-import * as Constants from './constants'
-import {
-  countingTask
-} from './tasks/counting/counting'
-import {
-  getSpeechWord
-} from './tasks/speech/speech'
-import {
-  getTranslation
-} from './tasks/translation/translation'
-import {
-  createSpell,
-  enemyAttack
-} from './spellCast'
+import * as Constants from './constants';
+import { countingTask } from './tasks/counting/counting';
+import { getSpeechWord } from './tasks/speech/speech';
+import { getTranslation } from './tasks/translation/translation';
+import { createSpell, enemyAttack } from './spellCast';
 
 function taskWindowLoader(spell, start, target) {
   $('#userModalTaskContainer').empty();
@@ -20,7 +11,7 @@ function taskWindowLoader(spell, start, target) {
 }
 
 async function addTask(spell, start, target) {
-  const randomTask = Constants.TASKSLIST[~~(Math.random() * Constants.TASKSLIST.length)];
+  const randomTask = Constants.TASKSLIST[Math.floor((Math.random() * Constants.TASKSLIST.length))];
   let type;
   let toDo;
   let task;
@@ -41,8 +32,8 @@ async function addTask(spell, start, target) {
       type = 'text';
       task = '';
       answer = await getSpeechWord();
-      setTimeout(function () {
-        speakToMe(answer)
+      setTimeout(() => {
+        speakToMe(answer);
       }, Constants.SPEECH_DELATION);
       createRepeatButton(answer);
       break;
@@ -50,12 +41,12 @@ async function addTask(spell, start, target) {
   createTaskQuiz(toDo, task);
   createSolveElement(type);
   createSubmitButton();
-  document.getElementById('submitTask').addEventListener('click', function () {
+  document.getElementById('submitTask').addEventListener('click', () => {
     isSolved(answer, spell, start, target);
   });
-  document.getElementById('userAnswer').addEventListener("keyup", function (evt) {
+  document.getElementById('userAnswer').addEventListener('keyup', (evt) => {
     evt.preventDefault();
-    if (evt.keyCode === 13) {
+    if (evt.keyCode === Constants.KEYBOARDEVENT.ENTER) {
       document.getElementById('submitTask').click();
     }
   });
@@ -74,8 +65,8 @@ function isSolved(answer, spell, start, target) {
   const userAnswer = document.getElementById('userAnswer').value;
   const tasksQuiz = document.getElementById('taskQuiz');
   tasksQuiz.style.color = 'red';
-  if (answer.toString().toLowerCase() == userAnswer.toLowerCase().trim()) {
-    tasksQuiz.innerText = `RIGHT!`;
+  if (answer.toString().toLowerCase() === userAnswer.toLowerCase().trim()) {
+    tasksQuiz.innerText = 'RIGHT!';
     setInterval(createSpell(spell, start, target), Constants.MODAL_DELATION);
   } else {
     tasksQuiz.innerText = `WRONG! Answer is '${answer}'`;
@@ -98,9 +89,9 @@ function createRepeatButton(word) {
   repeatButton.setAttribute('class', 'btn btn-danger float-right');
   repeatButton.setAttribute('id', 'repeatTask');
   repeatButton.innerHTML = 'Repeat';
-  repeatButton.addEventListener('click', function () {
+  repeatButton.addEventListener('click', () => {
     speakToMe(word);
-  })
+  });
   document.getElementById('modalFooter').appendChild(repeatButton);
 }
 
@@ -117,11 +108,9 @@ function createSolveElement(type) {
   tempElemet.setAttribute('id', 'userAnswer');
   tempElemet.setAttribute('type', `${type}`);
   document.getElementById('userModalTaskContainer').appendChild(tempElemet);
-  document.onkeypress = function () {
-    document.getElementById("userAnswer").focus();
+  document.onkeypress = () => {
+    document.getElementById('userAnswer').focus();
   };
 }
 
-export {
-  taskWindowLoader
-}
+export { taskWindowLoader };

@@ -1,8 +1,6 @@
-import {
-  getJSON
-} from '../../getJSON';
+import { getJSON } from '../../getJSON';
 
-const speechDictionaryUrl = `/resources/dictionaries/speech-dictionary.json`;
+const speechDictionaryUrl = '/resources/dictionaries/speech-dictionary.json';
 const getSpeechWord = () => {
   const lang = 'eng';
   return getJSON(speechDictionaryUrl)
@@ -22,10 +20,4 @@ const getSpeechWord = () => {
     });
 };
 
-async function speech() {
-  const word = await getSpeechWord();
-}
-
-export {
-  getSpeechWord
-}
+export { getSpeechWord };

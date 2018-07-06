@@ -1,0 +1,15 @@
+{
+    "extends": "airbnb-base",
+    "rules": {
+        "no-undef": "warn",
+        "no-param-reassign": "warn",
+        "class-methods-use-this": "warn",
+        "no-use-before-define": "warn",
+        "prefer-destructuring": "warn",
+        "default-case": "warn"
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}

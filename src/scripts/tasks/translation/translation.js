@@ -1,8 +1,6 @@
-import {
-  getJSON
-} from '../../getJSON'
+import { getJSON } from '../../getJSON';
 
-const translationDictionaryUrl = `/resources/dictionaries/languages-dictionary.json`;
+const translationDictionaryUrl = '/resources/dictionaries/languages-dictionary.json';
 const getTranslation = () => {
   const fromLang = 'eng';
   const toLang = 'rus';
@@ -24,10 +22,4 @@ const getTranslation = () => {
     });
 };
 
-async function drawTranslations() {
-  const [unTranslated, translated] = await getTranslation();
-}
-
-export {
-  getTranslation
-}
+export { getTranslation };

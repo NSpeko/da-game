@@ -1,45 +1,52 @@
-import {
-  SPELLLIST
-} from './spells'
-import {
-  PLAYER,
-  ENEMY
-} from './actors'
-import * as Constants from './constants'
+import { SPELLLIST } from './spells';
+import { PLAYER, ENEMY } from './actors';
+import * as Constants from './constants';
 
 function createSpell(spell, start, target) {
   initSound(spell);
   let x = getStartX(start, target, spell);
   let y = getStartY(target, spell);
-  let distance = Math.abs(start.place.x - target.place.x + ENEMY.image.width / 2 + PLAYER.image.width / 2);
-  if (start.type == 'player') distance += target.image.width / 2;
+  let distance =
+  Math.abs((start.place.x - target.place.x) + (ENEMY.image.width / 2) + (PLAYER.image.width / 2));
+  if (start.type === 'player') {
+    distance += target.image.width / 2;
+  }
   if (spell.type === 'heal') {
     start.heal(spell);
     stopSound(spell);
   } else {
-    let spellInterval = setInterval(function () {
-      Constants.spellContext.clearRect(x, y, spell.width * Constants.PX, spell.height * Constants.PX);
+    const spellInterval = setInterval(() => {
+      Constants.spellContext.clearRect(
+        x,
+        y,
+        spell.width * Constants.PX,
+        spell.height * Constants.PX,
+      );
       [x, y] = getCoordinates(x, y, start, spell, distance);
-      Constants.spellContext.drawImage(spell.image, x, y, spell.width * Constants.PX, spell.height * Constants.PX);
+      Constants.spellContext.drawImage(
+        spell.image,
+        x,
+        y,
+        spell.width * Constants.PX,
+        spell.height * Constants.PX,
+      );
       if (start.type === 'player') {
         if (x >= target.place.x && y >= target.place.y) {
-          endSpell(spell, target, spellInterval, x, y, Constants.spellContext)
+          endSpell(spell, target, spellInterval, x, y, Constants.spellContext);
         }
-      } else {
-        if (x <= target.place.x + target.image.width / 2 && y >= target.place.y) {
-          endSpell(spell, target, spellInterval, x, y, Constants.spellContext)
-        }
+      } else if (x <= target.place.x + (target.image.width / 2) && y >= target.place.y) {
+        endSpell(spell, target, spellInterval, x, y, Constants.spellContext);
       }
-    }, 24)
+    }, 24);
   }
 }
 
 function getStartY(target, spell) {
-  let y = target.place.y + target.image.height / 4;
+  let y = target.place.y + (target.image.height / 4);
   if (spell.type === 'drop') {
     y = 0;
   }
-  return y
+  return y;
 }
 
 function getStartX(start, target, spell) {
@@ -50,26 +57,26 @@ function getStartX(start, target, spell) {
   if (spell.type === 'drop') {
     x = target.place.x;
   }
-  return x
+  return x;
 }
 
 function getCoordinates(x, y, start, spell, distance) {
   let newX = x;
   let newY = y;
   let distancePart;
-  if (x >= distance - distance / 4) {
-    distancePart = 4
+  if (x >= distance - (distance / 4)) {
+    distancePart = 4;
   } else if (x >= distance / 2) {
-    distancePart = 3
+    distancePart = 3;
   } else if (x <= distance / 4) {
-    distancePart = 1
+    distancePart = 1;
   } else {
-    distancePart = 2
+    distancePart = 2;
   }
 
   switch (spell.type) {
     case 'flying':
-      if (newX >= distance / 2 - distance / 12 && newX <= distance / 2 + distance / 12) {
+      if (newX >= (distance / 2) - (distance / 12) && newX <= (distance / 2) + (distance / 12)) {
         newY -= 0;
       } else if (start.type === 'enemy') {
         switch (distancePart) {
@@ -77,13 +84,13 @@ function getCoordinates(x, y, start, spell, distance) {
             newY += spell.step.y * Constants.PX;
             break;
           case 2:
-            newY += spell.step.y * Constants.PX / 2
+            newY += spell.step.y * (Constants.PX / 2);
             break;
           case 3:
-            newY -= spell.step.y * Constants.PX / 2
+            newY -= spell.step.y * (Constants.PX / 2);
             break;
           case 4:
-            newY -= spell.step.y * Constants.PX
+            newY -= spell.step.y * Constants.PX;
             break;
         }
       } else if (start.type === 'player') {
@@ -92,13 +99,13 @@ function getCoordinates(x, y, start, spell, distance) {
             newY -= spell.step.y * Constants.PX;
             break;
           case 2:
-            newY -= spell.step.y * Constants.PX / 2;
+            newY -= spell.step.y * (Constants.PX / 2);
             break;
           case 3:
-            newY += spell.step.y * Constants.PX / 6;
+            newY += spell.step.y * (Constants.PX / 6);
             break;
           case 4:
-            newY += spell.step.y * Constants.PX / 2;
+            newY += spell.step.y * (Constants.PX / 2);
             break;
         }
       }
@@ -117,17 +124,20 @@ function getCoordinates(x, y, start, spell, distance) {
   if (start.type === 'player') {
     newX += spell.step.x;
   } else newX -= spell.step.x;
-  return [newX, newY]
+  return [newX, newY];
 }
 
-function stopAnimation(interval, x = 0, y = 0, context, width = canvasWidth, height = canvasHeight) {
+function stopAnimation(interval, x = 0, y = 0, context, width, height) {
   clearInterval(interval);
   context.clearRect(x, y, width, height);
 }
 
 function endSpell(spell, target, spellInterval, x, y, spellContext) {
   spellAttack(spell, target);
-  stopAnimation(spellInterval, x, y, spellContext, spell.width * Constants.PX, spell.height * Constants.PX);
+  stopAnimation(
+    spellInterval, x, y,
+    spellContext, spell.width * Constants.PX, spell.height * Constants.PX,
+  );
 }
 
 function spellAttack(spell, target) {
@@ -136,12 +146,12 @@ function spellAttack(spell, target) {
 }
 
 function getRandomSpell() {
-  let spellNumber = ~~(Math.random() * SPELLLIST.length)
-  return SPELLLIST[spellNumber]
+  const spellNumber = Math.floor((Math.random() * SPELLLIST.length));
+  return SPELLLIST[spellNumber];
 }
 
 function enemyAttack() {
-  let randomSpell = getRandomSpell();
+  const randomSpell = getRandomSpell();
   createSpell(randomSpell, ENEMY, PLAYER);
 }
 
@@ -155,9 +165,4 @@ function initSound(spell) {
   spell.sound.play();
 }
 
-export {
-  enemyAttack
-}
-export {
-  createSpell
-}
+export { enemyAttack, createSpell };

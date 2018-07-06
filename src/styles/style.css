@@ -21,11 +21,10 @@
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Verdana;
 }
 
 .main-game-container {
-  position: relative;
   margin-top: 4rem;
   background: url("../resources/images/Background.png") no-repeat center center;
   background-size: cover;
@@ -49,7 +48,7 @@ body {
 }
 
 .canvas-sheet {
-  position: absolute;
+  position: relative;
 }
 
 .skills-sheet-canvas {
@@ -61,7 +60,7 @@ body {
 }
 
 .game-menu {
-  position: absolute;
+  position: relative;
   z-index: 100;
   display: inline-flex;
 }

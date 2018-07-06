@@ -1,6 +1,6 @@
 function pageLoaderSpinnerFunction() {
-  $('document').ready(function () {
-    setTimeout(function () {
+  $('document').ready(() => {
+    setTimeout(() => {
       $('#pageLoaderSpinnerElement').toggleClass('not-displayed');
       $('#onlyLoggedUserContent').toggleClass('not-displayed');
       $('body').toggleClass('bg-secondary');
@@ -8,6 +8,4 @@ function pageLoaderSpinnerFunction() {
   });
 }
 
-export {
-  pageLoaderSpinnerFunction
-}
+export { pageLoaderSpinnerFunction };

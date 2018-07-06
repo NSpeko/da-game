@@ -1,20 +1,20 @@
-const $canvasContainer=$('#gameWindow');
-const $spellCanvas = $('#spellCanvas')[0];
-const spellContext = $spellCanvas.getContext('2d');
-const actorsCanvas = document.getElementById('actors')
+const spellCanvas = document.getElementById('spellCanvas');
+const spellContext = spellCanvas.getContext('2d');
+const actorsCanvas = document.getElementById('actors');
 const actorsContext = actorsCanvas.getContext('2d');
 let CANVAS_WIDTH = document.getElementById('gameWindow').offsetWidth;
 let CANVAS_HEIGHT = 350;
-const getScale = () => CANVAS_WIDTH / 800
+actorsCanvas.style.marginLeft = `-${CANVAS_WIDTH}px`;
+const getScale = () => CANVAS_WIDTH / 800;
 let PX = getScale();
 
 function rebuildCanvas() {
   CANVAS_WIDTH = document.getElementById('gameWindow').offsetWidth;
   PX = getScale();
   CANVAS_HEIGHT = 350 * PX;
-  $canvasContainer.height(CANVAS_HEIGHT);
-  $spellCanvas.width = CANVAS_WIDTH;
-  $spellCanvas.height = CANVAS_HEIGHT;
+  actorsCanvas.style.marginLeft = `-${CANVAS_WIDTH}px`;
+  spellCanvas.width = CANVAS_WIDTH;
+  spellCanvas.height = CANVAS_HEIGHT;
   actorsCanvas.width = CANVAS_WIDTH;
   actorsCanvas.height = CANVAS_HEIGHT;
 }
@@ -46,13 +46,13 @@ const LVL_SIZE = 50;
 const LVL_WRAP = 10;
 
 
-const ENEMY_PATH = `../resources/images/enemy`;
+const ENEMY_PATH = '../resources/images/enemy';
 const PLAYER_PATH = '../resources/images/player';
 const PLAYER_FEMALE_NUM = 1;
 const PLAYER_MALE_NUM = 2;
 
-const SPELL_IMAGE_PATH = `../resources/images/spell/`;
-const SPELL_SOUND_PATH = `../resources/audio/spell/`;
+const SPELL_IMAGE_PATH = '../resources/images/spell/';
+const SPELL_SOUND_PATH = '../resources/audio/spell/';
 const MAX_HEAL_POINTS = 310;
 const HEAL = 30;
 const ATTACK = 60;
@@ -61,6 +61,9 @@ const TOP_COUNT = 10;
 const TASKSLIST = ['counting', 'translation', 'speech'];
 const MAX_COUNTING_NUM = 20;
 const SIGN_ARRAY = ['-', '+', '*'];
+const KEYBOARDEVENT = {
+  ENTER: 13,
+};
 const MODAL_DELATION = 2000;
 const SPEECH_DELATION = 800;
 
@@ -85,7 +88,7 @@ export {
   TOP_COUNT,
   WRAP,
   VERTICAL_WRAP,
-  $spellCanvas,
+  spellCanvas,
   spellContext,
   actorsCanvas,
   actorsContext,
@@ -112,5 +115,6 @@ export {
   WEAPON_WIDTH,
   WEAPON_HEIGHT,
   LEGS_WIDTH,
-  LEGS_HEIGHT
+  LEGS_HEIGHT,
+  KEYBOARDEVENT,
 };
