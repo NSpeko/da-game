@@ -1,5 +1,5 @@
 import * as Constants from './constants';
-import { enemyDraw } from './monster/monster-creation';
+import enemyDraw from './monster/monster-creation';
 
 let ENEMY;
 let PLAYER;
@@ -8,7 +8,7 @@ class Actor {
   constructor(xLoc, yLoc, type, name) {
     this.place = {
       x: xLoc * Constants.PX,
-      y: yLoc * Constants.PX,
+      y: yLoc * Constants.PX
     };
     this.type = type;
     if (name) {
@@ -36,15 +36,15 @@ class Actor {
     Constants.actorsContext.textAlign = 'center';
     Constants.actorsContext.fillText(
       this.name,
-      this.place.x - (nameWrap * Constants.PX),
-      this.place.y - NAME_WRAP,
+      this.place.x - nameWrap * Constants.PX,
+      this.place.y - NAME_WRAP
     );
     Constants.actorsContext.fillStyle = 'black';
     Constants.actorsContext.textAlign = 'center';
     Constants.actorsContext.strokeText(
       this.name,
-      this.place.x - (nameWrap * Constants.PX),
-      this.place.y - NAME_WRAP,
+      this.place.x - nameWrap * Constants.PX,
+      this.place.y - NAME_WRAP
     );
   }
   drawHP(hpWrap) {
@@ -57,23 +57,23 @@ class Actor {
     }
     Constants.actorsContext.fillStyle = 'red';
     Constants.actorsContext.fillRect(
-      this.place.x - (hpWrap * Constants.PX),
+      this.place.x - hpWrap * Constants.PX,
       this.place.y - HP_WRAP,
       hpPercent * this.image.width,
-      Constants.HP_LINE_HEIGHT * Constants.PX,
+      Constants.HP_LINE_HEIGHT * Constants.PX
     );
     Constants.actorsContext.fillStyle = 'black';
     Constants.actorsContext.strokeRect(
-      this.place.x - (hpWrap * Constants.PX),
+      this.place.x - hpWrap * Constants.PX,
       this.place.y - HP_WRAP,
       this.image.width,
-      Constants.HP_LINE_HEIGHT * Constants.PX,
+      Constants.HP_LINE_HEIGHT * Constants.PX
     );
   }
   rebuild(rebuildedX, rebuildedY) {
     this.place = {
       x: rebuildedX,
-      y: rebuildedY,
+      y: rebuildedY
     };
     if (this.type === 'enemy') {
       this.image.width = Constants.ENEMY_WIDTH * Constants.PX;
@@ -87,10 +87,10 @@ class Actor {
   heal(spell) {
     Constants.spellContext.drawImage(
       spell.image,
-      this.place.x - (this.image.width / 4),
+      this.place.x - this.image.width / 4,
       this.place.y,
       spell.width,
-      spell.height,
+      spell.height
     );
     if (this.healPoints <= Constants.MAX_HEAL_POINTS - Constants.HEAL) {
       this.healPoints += Constants.HEAL;
@@ -100,10 +100,10 @@ class Actor {
     this.effect();
     setTimeout(() => {
       Constants.spellContext.clearRect(
-        this.place.x - (this.image.width / 4),
+        this.place.x - this.image.width / 4,
         this.place.y,
         spell.width,
-        spell.height,
+        spell.height
       );
     }, 500);
   }
@@ -133,7 +133,7 @@ class Enemy extends Actor {
       weapon: build.weapon,
       legs: build.legs,
       width: image.width,
-      height: image.height,
+      height: image.height
     };
     this.healPoints = Constants.MAX_HEAL_POINTS;
     this.redraw();
@@ -145,33 +145,34 @@ class Enemy extends Actor {
   drawImage() {
     Constants.actorsContext.drawImage(
       this.image.legs,
-      this.place.x - ((Constants.BODY_WIDTH * Constants.PX) / 6),
+      this.place.x - (Constants.BODY_WIDTH * Constants.PX) / 6,
       this.place.y +
-      ((Constants.BODY_HEIGHT * Constants.PX) / 1.5) + ((Constants.HEAD_HEIGHT * Constants.PX) / 3),
+        (Constants.BODY_HEIGHT * Constants.PX) / 1.5 +
+        (Constants.HEAD_HEIGHT * Constants.PX) / 3,
       Constants.LEGS_WIDTH * Constants.PX,
-      Constants.LEGS_HEIGHT * Constants.PX,
+      Constants.LEGS_HEIGHT * Constants.PX
     );
     Constants.actorsContext.drawImage(
       this.image.body,
-      this.place.x - ((Constants.BODY_WIDTH * Constants.PX) / 3.5),
-      this.place.y + ((Constants.HEAD_HEIGHT * Constants.PX) / 4),
+      this.place.x - (Constants.BODY_WIDTH * Constants.PX) / 3.5,
+      this.place.y + (Constants.HEAD_HEIGHT * Constants.PX) / 4,
       Constants.BODY_WIDTH * Constants.PX,
-      Constants.BODY_HEIGHT * Constants.PX,
+      Constants.BODY_HEIGHT * Constants.PX
     );
     Constants.actorsContext.drawImage(
       this.image.head,
-      this.place.x - ((Constants.BODY_WIDTH * Constants.PX) / 50),
-      this.place.y - ((Constants.HEAD_HEIGHT * Constants.PX) / 3),
+      this.place.x - (Constants.BODY_WIDTH * Constants.PX) / 50,
+      this.place.y - (Constants.HEAD_HEIGHT * Constants.PX) / 3,
       Constants.HEAD_WIDTH * Constants.PX,
-      Constants.HEAD_HEIGHT * Constants.PX,
+      Constants.HEAD_HEIGHT * Constants.PX
     );
     Constants.actorsContext.drawImage(
       this.image.weapon,
-      this.place.x - (1.1 * Constants.WEAPON_WIDTH * Constants.PX),
+      this.place.x - 1.1 * Constants.WEAPON_WIDTH * Constants.PX,
       this.place.y +
-      ((Constants.HEAD_HEIGHT * Constants.PX) - ((Constants.WEAPON_HEIGHT / 1.5) * Constants.PX)),
+        (Constants.HEAD_HEIGHT * Constants.PX - (Constants.WEAPON_HEIGHT / 1.5) * Constants.PX),
       Constants.WEAPON_WIDTH * Constants.PX,
-      Constants.WEAPON_HEIGHT * Constants.PX,
+      Constants.WEAPON_HEIGHT * Constants.PX
     );
   }
   loose() {
@@ -180,10 +181,10 @@ class Enemy extends Actor {
   }
   clearImage() {
     Constants.actorsContext.clearRect(
-      this.place.x - (this.image.width / 2),
+      this.place.x - this.image.width / 2,
       this.place.y,
       this.image.width * 1.3,
-      this.image.height,
+      this.image.height
     );
   }
 }
@@ -194,16 +195,15 @@ function createEnemy() {
   enemyImg.height = Constants.ENEMY_HEIGHT * Constants.PX;
   enemyDraw().then(([name, build]) => {
     ENEMY = new Enemy(
-      Constants.CANVAS_WIDTH - Constants.ENEMY_WIDTH - (Constants.WRAP * Constants.PX),
-      Constants.CANVAS_HEIGHT - Constants.ENEMY_HEIGHT - (Constants.VERTICAL_WRAP * Constants.PX),
+      Constants.CANVAS_WIDTH - Constants.ENEMY_WIDTH - Constants.WRAP * Constants.PX,
+      Constants.CANVAS_HEIGHT - Constants.ENEMY_HEIGHT - Constants.VERTICAL_WRAP * Constants.PX,
       'enemy',
       enemyImg,
       name,
-      build,
+      build
     );
   });
 }
-
 
 class Player extends Actor {
   constructor(xLoc, yLoc, type, image, name) {
@@ -219,7 +219,7 @@ class Player extends Actor {
       this.place.x,
       this.place.y,
       this.image.width,
-      this.image.height,
+      this.image.height
     );
   }
   drawInfo() {
@@ -233,8 +233,8 @@ class Player extends Actor {
     Constants.actorsContext.textAlign = 'center';
     Constants.actorsContext.fillText(
       this.score + 1,
-      (Constants.CANVAS_WIDTH / 2) - (this.score * Constants.PX),
-      (Constants.LVL_WRAP * Constants.PX) + (Constants.LVL_SIZE * Constants.PX),
+      Constants.CANVAS_WIDTH / 2 - this.score * Constants.PX,
+      Constants.LVL_WRAP * Constants.PX + Constants.LVL_SIZE * Constants.PX
     );
   }
   win() {
@@ -274,10 +274,12 @@ class Player extends Actor {
     }
     const currentScore = {
       name: this.name,
-      score: this.score,
+      score: this.score
     };
     this.createGameScoreList(allScores, currentScore);
-    gameWindow.append('<button class="btn btn-primary" onclick="location.reload();">Repeat?</button>');
+    gameWindow.append(
+      '<button class="btn btn-primary" onclick="location.reload();">Repeat?</button>'
+    );
     localStorage.scoreAll = JSON.stringify(allScores);
     this.healPoints = Constants.MAX_HEAL_POINTS;
   }
@@ -286,7 +288,7 @@ class Player extends Actor {
       this.place.x,
       this.place.y,
       this.image.width,
-      this.image.heigth,
+      this.image.heigth
     );
   }
 }
@@ -303,7 +305,7 @@ function createPlayer(gender, name) {
     Constants.CANVAS_HEIGHT - Constants.PLAYER_HEIGHT - Constants.VERTICAL_WRAP * Constants.PX,
     'player',
     playerImg,
-    name,
+    name
   );
 }
 
@@ -317,8 +319,4 @@ function drawHeroes() {
 
 drawHeroes();
 
-export {
-  PLAYER,
-  ENEMY,
-  drawHeroes,
-};
+export { PLAYER, ENEMY, drawHeroes };

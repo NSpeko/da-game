@@ -1,17 +1,17 @@
 import * as Constants from './constants';
-import { countingTask } from './tasks/counting/counting';
-import { getSpeechWord } from './tasks/speech/speech';
-import { getTranslation } from './tasks/translation/translation';
+import countingTask from './tasks/counting/counting';
+import getSpeechWord from './tasks/speech/speech';
+import getTranslation from './tasks/translation/translation';
 import { createSpell, enemyAttack } from './spellCast';
 
-function taskWindowLoader(spell, start, target) {
+export default function taskWindowLoader(spell, start, target) {
   $('#userModalTaskContainer').empty();
   $('#modalFooter').empty();
   addTask(spell, start, target);
 }
 
 async function addTask(spell, start, target) {
-  const randomTask = Constants.TASKSLIST[Math.floor((Math.random() * Constants.TASKSLIST.length))];
+  const randomTask = Constants.TASKSLIST[Math.floor(Math.random() * Constants.TASKSLIST.length)];
   let type;
   let toDo;
   let task;
@@ -44,7 +44,7 @@ async function addTask(spell, start, target) {
   document.getElementById('submitTask').addEventListener('click', () => {
     isSolved(answer, spell, start, target);
   });
-  document.getElementById('userAnswer').addEventListener('keyup', (evt) => {
+  document.getElementById('userAnswer').addEventListener('keyup', evt => {
     evt.preventDefault();
     if (evt.keyCode === Constants.KEYBOARDEVENT.ENTER) {
       document.getElementById('submitTask').click();
@@ -112,5 +112,3 @@ function createSolveElement(type) {
     document.getElementById('userAnswer').focus();
   };
 }
-
-export { taskWindowLoader };

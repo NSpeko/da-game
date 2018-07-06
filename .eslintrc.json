@@ -5,8 +5,12 @@
         "no-param-reassign": "warn",
         "class-methods-use-this": "warn",
         "no-use-before-define": "warn",
-        "prefer-destructuring": "warn",
-        "default-case": "warn"
+        "default-case": "off",
+        "arrow-parens": "warn",
+        "function-paren-newline": "warn",
+        "comma-dangle": "warn",
+        "no-mixed-operators": "off",
+        "no-unused-vars": "warn"
     },
     "env": {
         "browser": true,

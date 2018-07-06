@@ -1,4 +1,4 @@
-function pageLoaderSpinnerFunction() {
+export default function pageLoaderSpinnerFunction() {
   $('document').ready(() => {
     setTimeout(() => {
       $('#pageLoaderSpinnerElement').toggleClass('not-displayed');
@@ -7,5 +7,3 @@ function pageLoaderSpinnerFunction() {
     }, 200);
   });
 }
-
-export { pageLoaderSpinnerFunction };

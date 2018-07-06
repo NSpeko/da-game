@@ -6,8 +6,9 @@ function createSpell(spell, start, target) {
   initSound(spell);
   let x = getStartX(start, target, spell);
   let y = getStartY(target, spell);
-  let distance =
-  Math.abs((start.place.x - target.place.x) + (ENEMY.image.width / 2) + (PLAYER.image.width / 2));
+  let distance = Math.abs(
+    start.place.x - target.place.x + ENEMY.image.width / 2 + PLAYER.image.width / 2
+  );
   if (start.type === 'player') {
     distance += target.image.width / 2;
   }
@@ -20,7 +21,7 @@ function createSpell(spell, start, target) {
         x,
         y,
         spell.width * Constants.PX,
-        spell.height * Constants.PX,
+        spell.height * Constants.PX
       );
       [x, y] = getCoordinates(x, y, start, spell, distance);
       Constants.spellContext.drawImage(
@@ -28,13 +29,13 @@ function createSpell(spell, start, target) {
         x,
         y,
         spell.width * Constants.PX,
-        spell.height * Constants.PX,
+        spell.height * Constants.PX
       );
       if (start.type === 'player') {
         if (x >= target.place.x && y >= target.place.y) {
           endSpell(spell, target, spellInterval, x, y, Constants.spellContext);
         }
-      } else if (x <= target.place.x + (target.image.width / 2) && y >= target.place.y) {
+      } else if (x <= target.place.x + target.image.width / 2 && y >= target.place.y) {
         endSpell(spell, target, spellInterval, x, y, Constants.spellContext);
       }
     }, 24);
@@ -42,7 +43,7 @@ function createSpell(spell, start, target) {
 }
 
 function getStartY(target, spell) {
-  let y = target.place.y + (target.image.height / 4);
+  let y = target.place.y + target.image.height / 4;
   if (spell.type === 'drop') {
     y = 0;
   }
@@ -50,7 +51,7 @@ function getStartY(target, spell) {
 }
 
 function getStartX(start, target, spell) {
-  let x = start.place.x;
+  let { x } = start.place;
   if (start.type === 'player') {
     x += start.image.width / 2;
   }
@@ -64,7 +65,7 @@ function getCoordinates(x, y, start, spell, distance) {
   let newX = x;
   let newY = y;
   let distancePart;
-  if (x >= distance - (distance / 4)) {
+  if (x >= distance - distance / 4) {
     distancePart = 4;
   } else if (x >= distance / 2) {
     distancePart = 3;
@@ -76,7 +77,7 @@ function getCoordinates(x, y, start, spell, distance) {
 
   switch (spell.type) {
     case 'flying':
-      if (newX >= (distance / 2) - (distance / 12) && newX <= (distance / 2) + (distance / 12)) {
+      if (newX >= distance / 2 - distance / 12 && newX <= distance / 2 + distance / 12) {
         newY -= 0;
       } else if (start.type === 'enemy') {
         switch (distancePart) {
@@ -135,8 +136,12 @@ function stopAnimation(interval, x = 0, y = 0, context, width, height) {
 function endSpell(spell, target, spellInterval, x, y, spellContext) {
   spellAttack(spell, target);
   stopAnimation(
-    spellInterval, x, y,
-    spellContext, spell.width * Constants.PX, spell.height * Constants.PX,
+    spellInterval,
+    x,
+    y,
+    spellContext,
+    spell.width * Constants.PX,
+    spell.height * Constants.PX
   );
 }
 
@@ -146,7 +151,7 @@ function spellAttack(spell, target) {
 }
 
 function getRandomSpell() {
-  const spellNumber = Math.floor((Math.random() * SPELLLIST.length));
+  const spellNumber = Math.floor(Math.random() * SPELLLIST.length);
   return SPELLLIST[spellNumber];
 }
 

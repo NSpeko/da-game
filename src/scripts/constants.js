@@ -45,7 +45,6 @@ const EFFECT_DURATION = 50;
 const LVL_SIZE = 50;
 const LVL_WRAP = 10;
 
-
 const ENEMY_PATH = '../resources/images/enemy';
 const PLAYER_PATH = '../resources/images/player';
 const PLAYER_FEMALE_NUM = 1;
@@ -62,7 +61,7 @@ const TASKSLIST = ['counting', 'translation', 'speech'];
 const MAX_COUNTING_NUM = 20;
 const SIGN_ARRAY = ['-', '+', '*'];
 const KEYBOARDEVENT = {
-  ENTER: 13,
+  ENTER: 13
 };
 const MODAL_DELATION = 2000;
 const SPEECH_DELATION = 800;
@@ -116,5 +115,5 @@ export {
   WEAPON_HEIGHT,
   LEGS_WIDTH,
   LEGS_HEIGHT,
-  KEYBOARDEVENT,
+  KEYBOARDEVENT
 };

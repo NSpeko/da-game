@@ -1,12 +1,12 @@
 import * as Constants from './constants';
 import { SPELLLIST } from './spells';
-import { taskWindowLoader } from './modals';
+import taskWindowLoader from './modals';
 import { PLAYER, ENEMY } from './actors';
 
 function addSpellButtons() {
   const spellMenu = document.getElementById('spellMenu');
   const healMenu = document.getElementById('healMenu');
-  SPELLLIST.forEach((el) => {
+  SPELLLIST.forEach(el => {
     const spellElement = createSpellElement(el);
     if (el.type === 'heal') {
       spellElement.addEventListener('click', () => {

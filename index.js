@@ -1,3 +1,8 @@
+// TODO: now: впишите столицы, впишите звуки животных...
+//       ez: верная столица, верное выражение перевода...
+//       new: впишите, что на картинке; выберите из приведенного; sortable;
+//       dif: всякая графическая хуйня
+
 const express = require('express');
 
 const bodyParser = require('body-parser');
@@ -8,9 +13,11 @@ const path = require('path');
 
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser.urlencoded({
-  extended: true,
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 
 app.use(express.static(`${__dirname}/src`));
 

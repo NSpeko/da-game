@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"No test specified\" && exit 1",
     "start": "node index.js",
-    "build": "webpack -p "
+    "build": "webpack -p ",
+    "watch": "webpack --watch"
   },
   "keywords": [],
   "author": "elostryy & Nspeko",
