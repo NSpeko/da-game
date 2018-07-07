@@ -1,0 +1,49 @@
+<link rel="import"
+      onload="
+            document.body.appendChild(
+          this.import.querySelector('template'));
+      customElements.define('modal-initial',
+         class extends HTMLElement {
+          constructor(){
+              super();
+              const template = document.getElementById('modal-initial-template').content;
+              const shadowRoot = this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
+          }
+      });"
+      href="modal_template/modal_template.html">
+
+<div class="modal fade text-dark" id="logInModal">
+    <modal-initial>
+        <div slot="modal-head">
+            <h4 class="modal-title">
+                User
+            </h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div slot="modal-body">
+            <label for="userName">Name:</label>
+            <input id="userName" class="form-control " type="text" name="Name" value="">
+            <br>
+            <label for="userGender">Gender:</label>
+            <br>
+            <div style="margin: 0 auto;">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input user-gender" name="optradion" value="female">Female
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input user-gender" name="optradion" value="male">Male
+                    </label>
+                </div>
+            </div>
+        </div>
+            <div slot="modal-footer">
+                <button class="btn btn-primary float-left" id="loginSubmit">Submit</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+    </modal-initial>
+</div>

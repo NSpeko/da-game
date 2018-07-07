@@ -1,0 +1,17 @@
+<template id="modal-initial-template">
+
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <slot name="modal-head">HEAD</slot>
+            </div>
+            <div class="modal-body ">
+                <slot name="modal-body">BODY</slot>
+            </div>
+            <div class="modal-footer">
+                <slot name="modal-footer">FOOTER</slot>
+            </div>
+        </div>
+    </div>
+
+</template>

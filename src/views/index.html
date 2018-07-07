@@ -18,6 +18,19 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <link rel="import"
+        onload="
+            document.body.appendChild(
+          this.import.querySelector('template'));
+      customElements.define('modal-initial',
+         class extends HTMLElement {
+          constructor(){
+              super();
+              const template = document.getElementById('modal-initial-template').content;
+              const shadowRoot = this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
+          }
+      });"
+        href="../components/modals/modal_template/modal_template.html">
 
   <header class="bg-dark fixed-top">
     <div class="container" style="max-height: inherit">
@@ -43,44 +56,11 @@
   </header>
 
   <div id="pageLoaderSpinnerElement" class="loader03 "></div>
-
-  <div class="modal fade text-dark" id="logInModal">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">
-            User
-          </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <label for="userName">Name:</label>
-          <input id="userName" class="form-control " type="text" name="Name" value="">
-          <br>
-          <label for="userGender">Gender:</label>
-          <br>
-          <div style="margin: 0 auto;">
-            <div class="form-check-inline">
-              <label class="form-check-label">
-                <input type="radio" class="form-check-input user-gender" name="optradion" value="female">Female
-              </label>
-            </div>
-            <div class="form-check-inline">
-              <label class="form-check-label">
-                <input type="radio" class="form-check-input user-gender" name="optradion" value="male">Male
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary float-left" id="loginSubmit">Submit</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <link rel="import"
+        onload="
+            document.body.appendChild(
+          this.import.querySelector('#logInModal'));"
+        href="../components/modals/log_in_modal.html">
   <div class="modal fade text-dark" id="solveGameTaskModal">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
