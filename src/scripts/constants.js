@@ -64,7 +64,11 @@ const TASKSLIST = [
   'capitals',
   'animalSounds',
   'flag',
-  'animals'
+  'animals',
+  'shuffledWords',
+  'sortableWords',
+  'typeNumber',
+  'typeSign'
 ];
 const KEYBOARDEVENT = {
   ENTER: 13

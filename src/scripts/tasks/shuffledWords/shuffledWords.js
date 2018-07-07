@@ -1,19 +1,9 @@
-const getJSON = url =>
-  new Promise(resolve => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.onload = function sendData() {
-      if (this.status === 200) {
-        resolve(this.response);
-      }
-    };
-    xhr.send();
-  });
+import { getJSON } from '../../getJSON';
 
 const wordsDictionaryUrl = '/resources/dictionaries/words-dictionary.json';
 const language = 'eng';
 
-function getWord() {
+export default function getWord() {
   return getJSON(wordsDictionaryUrl)
     .then(
       data =>
@@ -48,10 +38,3 @@ function shuffleWord(word) {
   }
   return wordForShuffle;
 }
-
-async function getMeWord() {
-  const arr = await getWord();
-  console.log(arr);
-}
-
-getMeWord();

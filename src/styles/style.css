@@ -7,6 +7,14 @@
   }
 }
 
+.letter {
+  padding: 2px;
+  margin: 1px;
+  font-size: 16pt;
+  background-color: rgba(122, 45, 56, 0.4);
+  cursor: pointer;
+}
+
 .loader03 {
   width: 16rem;
   height: 16rem;

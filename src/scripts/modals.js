@@ -7,6 +7,9 @@ import getCapital from './tasks/countryCapitals/countryCapitals';
 import getAnimal from './tasks/animalSounds/animalSounds';
 import getFlag from './tasks/flag/flag';
 import getAnimalImage from './tasks/animal/animal';
+import getWord from './tasks/shuffledWords/shuffledWords';
+import typeNumber from './tasks/typeNumber/typeNumber';
+import typeSign from './tasks/typeSign/typeSign';
 
 export default function taskWindowLoader(spell, start, target) {
   $('#userModalTaskContainer').empty();
@@ -20,11 +23,22 @@ async function addTask(spell, start, target) {
   let toDo;
   let task;
   let answer;
+  let preventFlag = false;
   switch (randomTask) {
     case 'counting':
       toDo = 'Count';
       type = 'number';
       [task, answer] = countingTask();
+      break;
+    case 'typeNumber':
+      toDo = 'Type right number';
+      type = 'number';
+      [task, answer] = typeNumber();
+      break;
+    case 'typeSign':
+      toDo = 'Type right sign';
+      type = 'text';
+      [task, answer] = typeSign();
       break;
     case 'translation':
       toDo = 'Translate';
@@ -57,6 +71,14 @@ async function addTask(spell, start, target) {
       answer = animalName;
       drawImage(animalImage);
       break;
+    case 'shuffledWords':
+      toDo = 'What word is it';
+      type = 'text';
+      task = '';
+      const [shuffledWord, answerWord] = await getWord();
+      answer = answerWord;
+      createShuffledWord(shuffledWord);
+      break;
     case 'speech':
       toDo = 'Write what you hear';
       type = 'text';
@@ -67,19 +89,77 @@ async function addTask(spell, start, target) {
       }, Constants.SPEECH_DELATION);
       createRepeatButton(answer);
       break;
+    case 'sortableWords':
+      toDo = 'Sort letters to get the word';
+      const [wordForShuffle, rightWord] = await getWord();
+      answer = rightWord;
+      task = '';
+      createTaskQuiz(toDo, task);
+      createSortableWord(wordForShuffle);
+      preventFlag = true;
+      createSubmitButton();
+      document.getElementById('submitTask').addEventListener('click', () => {
+        isSorted(answer, spell, start, target);
+      });
+      break;
   }
-  createTaskQuiz(toDo, task);
-  createSolveElement(type);
-  createSubmitButton();
-  document.getElementById('submitTask').addEventListener('click', () => {
-    isSolved(answer, spell, start, target);
+  if (!preventFlag) {
+    createTaskQuiz(toDo, task);
+    createSolveElement(type);
+    createSubmitButton();
+    document.getElementById('submitTask').addEventListener('click', () => {
+      isSolved(answer, spell, start, target);
+    });
+    document.getElementById('userAnswer').addEventListener('keyup', evt => {
+      evt.preventDefault();
+      if (evt.keyCode === Constants.KEYBOARDEVENT.ENTER) {
+        document.getElementById('submitTask').click();
+      }
+    });
+  }
+}
+
+function isSorted(answer, spell, start, target) {
+  const userAnswer = Array.from(document.querySelectorAll('.letter'))
+    .map(el => el.textContent)
+    .join('');
+  const tasksQuiz = document.getElementById('taskQuiz');
+  tasksQuiz.style.color = 'red';
+  if (answer.toString().toLowerCase() === userAnswer.toLowerCase().trim()) {
+    tasksQuiz.innerText = 'RIGHT!';
+    setInterval(createSpell(spell, start, target), Constants.MODAL_DELATION);
+  } else {
+    tasksQuiz.innerText = `WRONG! Answer is '${answer}'`;
+    setInterval(enemyAttack(), Constants.MODAL_DELATION);
+  }
+  tasksQuiz.style.color = 'black';
+}
+
+function createSortableWord(wordArr) {
+  const shuffledwordElement = document.createElement('span');
+  shuffledwordElement.setAttribute('id', 'sortable');
+  wordArr.forEach(el => {
+    const letterElement = document.createElement('span');
+    letterElement.setAttribute('class', 'letter');
+    letterElement.textContent = el;
+    shuffledwordElement.appendChild(letterElement);
   });
-  document.getElementById('userAnswer').addEventListener('keyup', evt => {
-    evt.preventDefault();
-    if (evt.keyCode === Constants.KEYBOARDEVENT.ENTER) {
-      document.getElementById('submitTask').click();
-    }
+  document.getElementById('userModalTaskContainer').appendChild(shuffledwordElement);
+  $(() => {
+    $('#sortable').sortable();
+    $('#sortable').disableSelection();
   });
+}
+
+function createShuffledWord(wordArr) {
+  const shuffledwordElement = document.createElement('span');
+  wordArr.forEach(el => {
+    const letterElement = document.createElement('span');
+    letterElement.setAttribute('class', 'letter');
+    letterElement.textContent = el;
+    shuffledwordElement.appendChild(letterElement);
+  });
+  document.getElementById('userModalTaskContainer').appendChild(shuffledwordElement);
 }
 
 function drawImage(imageSrc) {

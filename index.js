@@ -1,5 +1,5 @@
 // TODO: not ez: кнопки да/нет
-//       new: впишите, что на картинке; выберите из приведенного; sortable;
+//       new: выберите из приведенного;
 
 const express = require('express');
 

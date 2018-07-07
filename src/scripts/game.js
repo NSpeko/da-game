@@ -16,3 +16,6 @@ import './tasks/countryCapitals/countryCapitals';
 import './tasks/animalSounds/animalSounds';
 import './tasks/flag/flag';
 import './tasks/animal/animal';
+import './tasks/shuffledWords/shuffledWords';
+import './tasks/typeNumber/typeNumber';
+import './tasks/typeSign/typeSign';
