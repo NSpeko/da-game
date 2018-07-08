@@ -1,6 +1,3 @@
-// TODO: not ez: кнопки да/нет
-//       new: выберите из приведенного;
-
 const express = require('express');
 
 const bodyParser = require('body-parser');
@@ -23,15 +20,8 @@ app.get('/game', (req, res) => {
   res.sendFile(path.join(`${__dirname}/src/views/index.html`));
 });
 
-app.get('/test', (req, res) => {
-  // delete after tortures
-  res.sendFile(path.join(`${__dirname}/src/scripts/test/test.html`));
-});
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(`${__dirname}/src/views/about.html`));
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
-});
+app.listen(port);

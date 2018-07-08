@@ -1,4 +1,4 @@
-import { getJSON } from '../../getJSON';
+import { getJSON } from '../../global/getJSON';
 
 const animalSoundsDictionaryUrl = '/resources/dictionaries/animalSounds-dictionary.json';
 
@@ -16,7 +16,7 @@ export default function getAnimal() {
         new Promise(resolve => {
           let animal;
           while (!animal) {
-            animal = animals[Math.round(Math.random() * animals.length)];
+            animal = animals[Math.floor(Math.random() * animals.length)];
             if (animal) resolve([animal.sound, animal.name]);
           }
         })

@@ -1,3 +1,5 @@
+import getRandomCountNum from '../getRandomCountNum';
+
 // now it's unstable and i know why, but it's secret
 export default function typeSign() {
   const SIGN_ARRAY = ['-', '+', '*'];
@@ -9,5 +11,3 @@ export default function typeSign() {
   const task = `${firstNum} ... ${secondNum} = ${answer}`;
   return [task, sign];
 }
-
-const getRandomCountNum = maxNum => Math.round(Math.random() * maxNum);

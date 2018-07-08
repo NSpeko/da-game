@@ -1,3 +1,5 @@
+import getRandomCountNum from '../getRandomCountNum';
+
 export default function countingTask() {
   const SIGN_ARRAY = ['-', '+', '*'];
   const MAX_COUNTING_NUM = 20;
@@ -8,5 +10,3 @@ export default function countingTask() {
   const answer = eval(task);
   return [task, answer];
 }
-
-const getRandomCountNum = maxNum => Math.round(Math.random() * maxNum);

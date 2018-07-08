@@ -1,4 +1,4 @@
-import { getJSON } from '../../getJSON';
+import { getJSON } from '../../global/getJSON';
 
 const capitalsDictionaryUrl = '/resources/dictionaries/capitals-dictionary.json';
 
@@ -16,7 +16,7 @@ export default function getCapital() {
         new Promise(resolve => {
           let entry;
           while (!entry) {
-            entry = entries[Math.round(Math.random() * entries.length)];
+            entry = entries[Math.floor(Math.random() * entries.length)];
             if (entry) resolve([entry.country, entry.capital]);
           }
         })

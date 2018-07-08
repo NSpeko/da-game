@@ -1,7 +1,16 @@
-import { getJSON } from '../../getJSON';
+import { getJSON } from '../../global/getJSON';
 
 const wordsDictionaryUrl = '/resources/dictionaries/words-dictionary.json';
 const language = 'eng';
+
+function shuffleWord(word) {
+  const wordForShuffle = word.split('');
+  for (let i = wordForShuffle.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [wordForShuffle[i], wordForShuffle[j]] = [wordForShuffle[j], wordForShuffle[i]];
+  }
+  return wordForShuffle;
+}
 
 export default function getWord() {
   return getJSON(wordsDictionaryUrl)
@@ -17,7 +26,7 @@ export default function getWord() {
         new Promise(resolve => {
           let word;
           while (!word) {
-            word = words[Math.round(Math.random() * words.length)][language];
+            word = words[Math.floor(Math.random() * words.length)][language];
             if (word) {
               const shuffled = shuffleWord(word);
               resolve([shuffled, word]);
@@ -28,13 +37,4 @@ export default function getWord() {
     .catch(error => {
       throw new Error(error);
     });
-}
-
-function shuffleWord(word) {
-  const wordForShuffle = word.split('');
-  for (let i = wordForShuffle.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [wordForShuffle[i], wordForShuffle[j]] = [wordForShuffle[j], wordForShuffle[i]];
-  }
-  return wordForShuffle;
 }

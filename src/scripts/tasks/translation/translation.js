@@ -1,4 +1,4 @@
-import { getJSON } from '../../getJSON';
+import { getJSON } from '../../global/getJSON';
 
 const translationDictionaryUrl = '/resources/dictionaries/languages-dictionary.json';
 export default function getTranslation() {
@@ -18,7 +18,7 @@ export default function getTranslation() {
         new Promise(resolve => {
           let word;
           while (!word) {
-            word = words[Math.round(Math.random() * words.length)];
+            word = words[Math.floor(Math.random() * words.length)];
             if (word) resolve([word[fromLang], word[toLang]]);
           }
         })

@@ -1,4 +1,4 @@
-import { getJSON } from '../../getJSON';
+import { getJSON } from '../../global/getJSON';
 
 const flagDictionaryUrl = '/resources/dictionaries/countryFlags-dictionary.json';
 const flagImagesUrl = '/resources/images/tasks/flags/';
@@ -16,7 +16,7 @@ export default function getFlag() {
         new Promise(resolve => {
           let flag;
           while (!flag) {
-            flag = flags[Math.round(Math.random() * flags.length)];
+            flag = flags[Math.floor(Math.random() * flags.length)];
             if (flag) resolve([`${flagImagesUrl}${flag.image}`, flag.country]);
           }
         })

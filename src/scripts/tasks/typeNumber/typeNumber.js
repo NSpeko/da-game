@@ -1,3 +1,5 @@
+import getRandomCountNum from '../getRandomCountNum';
+
 export default function typeNumber() {
   const SIGN_ARRAY = ['-', '+', '*'];
   const MAX_COUNTING_NUM = 20;
@@ -8,5 +10,3 @@ export default function typeNumber() {
   const task = `${firstNum} ${sign} X = ${answer}`;
   return [task, secondNum];
 }
-
-const getRandomCountNum = maxNum => Math.round(Math.random() * maxNum);
