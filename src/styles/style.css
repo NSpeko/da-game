@@ -122,3 +122,9 @@ body {
 .text-light {
   text-shadow: 1px 1px 1px black;
 }
+
+.modal-close-btn{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}

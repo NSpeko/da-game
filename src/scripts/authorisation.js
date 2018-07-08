@@ -7,7 +7,7 @@ document.getElementById('loginSubmit').addEventListener('click', () => {
   if (name && gender) {
     document.getElementsByClassName('game-menu')[0].style.display = 'block';
     logUserIn(name, gender);
-    $('#logInModal').modal('toggle');
+    document.getElementById('logInModal').classList.toggle('not-displayed');
     window.location = `${window.location.href.split('?')[0]}?session=${Date.now()}`;
   }
 });

@@ -1,23 +1,24 @@
 <link rel="import"
       onload="
-            document.body.appendChild(
+          document.body.appendChild(
           this.import.querySelector('template'));
-      customElements.define('modal-initial',
-         class extends HTMLElement {
-          constructor(){
-              super();
-              const template = document.getElementById('modal-initial-template').content;
-              const shadowRoot = this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
+          customElements.define('modal-initial',
+                   class extends HTMLElement {
+              constructor(){
+                  super();
+                  const template = document.getElementById('modal-initial-template').content;
+                  const shadowRoot = this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
+              }
           }
-      });"
+      );"
       href="modal_template/modal_template.html">
 
-    <modal-initial id="logInModal">
+    <modal-initial id="logInModal" class="not-displayed">
         <div slot="modal-head">
             <h4 class="modal-title">
                 User
             </h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close modal-close-btn" id="closeLogInModal">&times;</button>
         </div>
         <div slot="modal-body">
             <label for="userName">Name:</label>
@@ -40,7 +41,7 @@
         </div>
             <div slot="modal-footer">
                 <button class="btn btn-primary float-left" id="loginSubmit">Submit</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                <button type="button" class="btn btn-danger" onclick="document.getElementById('closeLogInModal').click();">
                     Close
                 </button>
             </div>
