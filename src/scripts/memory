@@ -35,28 +35,28 @@ async function addTask(spell, start, target) {
       [toDo, task, answer, type] = typeSignModule();
       break;
     case 'translation':
-      [toDo, task, answer, type] = await translationModule();
+      [toDo, task, answer, type] = translationModule();
       break;
     case 'capitals':
-      [toDo, task, answer, type] = await capitalsModule();
+      [toDo, task, answer, type] = capitalsModule();
       break;
     case 'animalSounds':
-      [toDo, task, answer, type] = await animalsSoundsModule();
+      [toDo, task, answer, type] = animalsSoundsModule();
       break;
     case 'flag':
-      [toDo, task, answer, type] = await flagModule();
+      [toDo, task, answer, type] = flagModule();
       break;
     case 'animals':
-      [toDo, task, answer, type] = await animalsModule();
+      [toDo, task, answer, type] = animalsModule();
       break;
     case 'shuffledWords':
-      [toDo, task, answer, type] = await shuffledWordsModule();
+      [toDo, task, answer, type] = shuffledWordsModule();
       break;
     case 'speech':
-      [toDo, task, answer, type] = await speechModule();
+      [toDo, task, answer, type] = speechModule();
       break;
     case 'sortableWords':
-      preventFlag = await sortableWordsModule();
+      preventFlag = sortableWordsModule();
       break;
   }
   if (!preventFlag) {
@@ -100,21 +100,21 @@ async function translationModule() {
   const toDo = 'Translate';
   const type = 'text';
   const [task, answer] = await getTranslation();
-  return await [toDo, task, answer, type];
+  return [toDo, task, answer, type];
 }
 
 async function capitalsModule() {
   const toDo = 'Write capital';
   const type = 'text';
   const [task, answer] = await getCapital();
-  return await [toDo, task, answer, type];
+  return [toDo, task, answer, type];
 }
 
 async function animalsSoundsModule() {
   const toDo = 'Write animal';
   const type = 'text';
   const [task, answer] = await getAnimal();
-  return await [toDo, task, answer, type];
+  return [toDo, task, answer, type];
 }
 
 async function flagModule() {
@@ -123,7 +123,7 @@ async function flagModule() {
   const task = '';
   const [flagImage, answer] = await getFlag();
   drawImage(flagImage);
-  return await [toDo, task, answer, type];
+  return [toDo, task, answer, type];
 }
 
 async function animalsModule() {
@@ -132,7 +132,7 @@ async function animalsModule() {
   const task = '';
   const [animalImage, answer] = await getAnimalImage();
   drawImage(animalImage);
-  return await [toDo, task, answer, type];
+  return [toDo, task, answer, type];
 }
 
 async function shuffledWordsModule() {
@@ -141,7 +141,7 @@ async function shuffledWordsModule() {
   const task = '';
   const [shuffledWord, answer] = await getWord();
   createShuffledWord(shuffledWord);
-  return await [toDo, task, answer, type];
+  return [toDo, task, answer, type];
 }
 
 async function speechModule() {
@@ -153,7 +153,7 @@ async function speechModule() {
     speakToMe(answer);
   }, Constants.SPEECH_DELATION);
   createRepeatButton(answer);
-  return await [toDo, task, answer, type];
+  return [toDo, task, answer, type];
 }
 
 async function sortableWordsModule() {
@@ -167,7 +167,7 @@ async function sortableWordsModule() {
   document.getElementById('submitTask').addEventListener('click', () => {
     isSorted(answer, spell, start, target);
   });
-  return await preventFlag;
+  return preventFlag;
 }
 
 function isSorted(answer, spell, start, target) {
