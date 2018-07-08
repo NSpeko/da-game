@@ -1,6 +1,103 @@
 <template id="modal-initial-template">
+    <style>
+        .modal-dialog{
+            /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 5%; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            width: 20%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
 
-    <div class="modal-dialog modal-sm">
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {
+                top: -20rem;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -20rem;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+        .modal-header {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            border-top-left-radius: .3rem;
+            border-top-right-radius: .3rem
+        }
+
+        .modal-header .close {
+            padding: 1rem;
+            margin: -1rem -1rem -1rem auto
+        }
+        .modal-body {
+            position: relative;
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            padding: 1rem
+        }
+        .modal-footer {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            padding: 1rem;
+            border-top: 1px solid #e9ecef
+        }
+
+        .modal-footer > :not(:first-child) {
+            margin-left: .25rem
+        }
+
+        .modal-footer > :not(:last-child) {
+            margin-right: .25rem
+        }
+    </style>
+    <div  class="modal-dialog fade text-dark">
         <div class="modal-content">
             <div class="modal-header">
                 <slot name="modal-head">HEAD</slot>
@@ -13,5 +110,4 @@
             </div>
         </div>
     </div>
-
 </template>

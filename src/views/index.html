@@ -18,19 +18,7 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <link rel="import"
-        onload="
-            document.body.appendChild(
-          this.import.querySelector('template'));
-      customElements.define('modal-initial',
-         class extends HTMLElement {
-          constructor(){
-              super();
-              const template = document.getElementById('modal-initial-template').content;
-              const shadowRoot = this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
-          }
-      });"
-        href="../components/modals/modal_template/modal_template.html">
+
 
   <header class="bg-dark fixed-top">
     <div class="container" style="max-height: inherit">
